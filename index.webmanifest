@@ -1,0 +1,16 @@
+{
+    "name": "Yiwei Yang (Resume)",
+    "short_name": "Yiwei Yang (Resume)",
+    "lang": "en-us",
+    "theme_color": "#ba0018",
+    "background_color": "#ba0018",
+    "icons": [
+        {
+            "src": "https://www.shanghaitech.edu.cn/_upload/tpl/00/20/32/template32/images/favicon.ico",
+            "sizes": "32x32",
+            "type": "image/png"
+        }
+    ],
+    "display": "standalone",
+    "start_url": "/"
+}

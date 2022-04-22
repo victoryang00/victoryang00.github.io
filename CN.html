@@ -3,15 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Yiwei Yang (Victor) - Resume</title>
-
+    <title>杨易为 Victor - 简历</title>
     <!--- <meta name="viewport" content="width=device-width, initial-scale=1"> --->
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
     <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--- <link rel="stylesheet" href="https://haoran-qiu.com/css/academic.min.5ac49d52d669340d29cb50b00bb7867f.css"> --->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css"
+        integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous"> -->
     <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 500px)" href="about/style_tiny.css">
     <link rel="stylesheet" type="text/css" media="screen and (min-device-width: 500px)" href="about/style.css">
     <link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,700|Source+Sans+Pro:400,400i"
@@ -22,6 +22,10 @@
         integrity=sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h crossorigin=anonymous>
     <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css
         integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin=anonymous>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js
+        integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js
+        integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
     <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css
         crossorigin=anonymous title=hl-light>
     <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css
@@ -46,10 +50,6 @@
             h3Elements.classList.toggle("dark-mode");
             var pageElements = document.getElementsByTagName("div")[0];
             pageElements.classList.toggle("dark-mode");
-            var codeElements = document.getElementsByClassName("mycode")[0];
-            codeElements.classList.toggle("dark-mode");
-            var codeElements = document.getElementsByClassName("mycode")[1];
-            codeElements.classList.toggle("dark-mode");
             for (let i = 0; i < 10; i++) {
                 codeElements = document.getElementsByClassName("grid-item")[i];
                 codeElements.classList.toggle("dark-mode");
@@ -60,6 +60,29 @@
                     codeElements.classList.toggle("dark-mode");
                 }
             }
+        }
+        function jsCite(e) {
+            let filename = e.attributes['data-filename'];
+            let modal = document.getElementById('modal');
+           
+            console.log("Inside function");
+            var rawFile = new XMLHttpRequest();
+            rawFile.open("GET", filename, true);
+            rawFile.onreadystatechange = function ()
+            {
+                if(rawFile.readyState === 4)
+                {
+                    if(rawFile.status === 200 || rawFile.status == 0)
+                    {
+                        var allText = rawFile.responseText;
+                        modal.innerHTML = allText;
+        
+                    }
+                }
+            }
+            rawFile.send(null);
+            $('.js-download-cite').attr('href', filename);
+            modal.modal('show');
         }
     </script>
     <style>
@@ -72,20 +95,18 @@
             /*border-radius: 100%;*/
         }
     </style>
-    <link rel=alternate href=/index.xml type=application/rss+xml title="Yiwei Yang @ShanghaiTech CS">
+    <link rel=alternate href=/index.xml type=application/rss+xml title="杨易为 @上科大计算机">
     <link rel=manifest href=/index.webmanifest>
-    <link rel=icon type=image/png
-        href=/about/victoryang00.png>
-    <link rel=apple-touch-icon type=image/png
-        href=/about/victoryang00.png>
+    <link rel=icon type=image/png href=/about/victoryang00.png>
+    <link rel=apple-touch-icon type=image/png href=/about/victoryang00.png>
     <link rel=canonical href=https://victoryang00.cn />
     <meta property=twitter:card content=summary>
-    <meta property=og:site_name content="Yiwei Yang @ShanghaiTech CS">
+    <meta property=og:site_name content="杨易为 @上科大计算机">
     <meta property=og:url content=https://victoryang00.cn />
-    <meta property=og:title content="Yiwei Yang @ShanghaiTech CS">
+    <meta property=og:title content="杨易为 @上科大计算机">
     <meta property=og:description content="Senior Undergraduate in Computer Science">
-    <meta property=og:image content=https://victoryang00.cn/about/image-20210419023404114.png>
-    <meta property=twitter:image content=https://victoryang00.cn/about/image-20210419023404114.png>
+    <meta property=og:image content=https://img.victoryang00.cn/image-20210419023404114.png>
+    <meta property=twitter:image content=https://img.victoryang00.cn/image-20210419023404114.png>
 </head>
 
 <body>
@@ -94,10 +115,9 @@
             <h1 class="col">
                 <a href="/about/image-20210419023404114.png"> <img class="demo"
                         src="/about/image-20210419023404114.png"></a>
-
                 <a
-                    class="container">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br></a>
-                <span class="name">Yiwei Yang</span> (Victor)
+                    class="container">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br></a>
+                <span class="name">杨易为</span> (Victor)
             </h1>
             <div class="contact-info col-right" style="line-height: 110%;">
                 <div class="container"><br></div>
@@ -109,8 +129,9 @@
                         <div class="ball"></div>
                     </label>
                 </div>
-                <div><a href="CN.html">中文简历</a><span class="iconify" data-icon="icon-park-outline:chinese"></span></div>
-                <div><a href="https://github.com/victoryang00/resume/releases/download/refs/heads/main/resume.pdf">PDF
+                <div><a href="index.html">English Version</a><span class="iconify"
+                        data-icon="icon-park-outline:english"></span></div>
+                <div><a href="https://github.com/victoryang00/resume/releases/download/refs/heads/main/resume-zh.pdf">PDF
                         Version</a><span class="iconify" data-icon="fluent:document-pdf-16-regular"></span></div>
                 <div><a font-size:2.5em href="mailto:victoryang00@ucsc.edu">victoryang00 at ucsc.edu</a><i
                         class="fas fa-envelope"></i></div>
@@ -148,203 +169,137 @@
             </div>
         </div>
 
-
         <div class="section row">
-            <h2 class="col">Biography</h2>
-            <div class="section-text col-right row">
-                I'm a Senior Computer Science student <a href="https://sist.shanghaitech.edu.cn">@ShanghaiTech</a>. I'm
-                honored to be under polished by three system related Professors <a
-                    href="http://faculty.sist.shanghaitech.edu.cn/faculty/songfu/">Foo</a>, <a
-                    href="https://www.researchgate.net/scientific-contributions/Shu-Yin-69825172">Shu</a> and <a
-                    href="https://toast-lab.tech/people/">Toast</a> no matter for my research career, my course journey
-                and high performance cluster competitions.
-
-                <pre><code class="language-scala mycode">case class DRAM(tag: String, taste: String, percentage: Int)
-val OnCrash = List(
-  DRAM("HPC Training", "Nice", 40),
-  DRAM("NVRAM Hooligon", "Damm Hard" 41),
-  DRAM("Compiler TA", "Thankless", 18),
-  DRAM("Course Work", "Indifferent", 1))
-val CoffeeTime =
-  for (OnCrash <- Machine if Machine.percentage.delta + Machine.mt19937ar.rand >= 1
-        && strcmp(Machine.taste,"So So") >0 && Machine.percentage--) //lazy eval
-    yield Machine.tag
-
-CoffeeTime.foreach(println)
-</code></pre>
-            </div>
-        </div>
-
-        <div class="section row">
-            <h2 class="col">Skills</h2>
-            <div class="section-text col-right">
-                <img style="width: 100%" class="mycode" src="https://www.josehu.com/assets/img/knowledge-graph.png">
+            <h2 class="col">自我陈述</h2>
+            <div class="section-text col-right row">学了一点点C++，Go和Rust，更少的Modern
+                Java和Scala，可以解决除了算法外的几乎所有代码问题。完全不会linux，会一点点LLVM，eBPF和Z3。AI是业余有空会开发开发的小东西。如果你觉得我写的代码或者发的paper没有novelty或者垃圾的要死，绝对不是你的问题，欢迎邮件来喷！
             </div>
         </div>
         <div class="section row">
-            <h2 class="col">Education</h2>
+            <h2 class="col">教育</h2>
             <div class="section-text col-right">
-                <h3><span class="emph">BEing</span> in Computer Science and Engineering
-                </h3>
-                <div><a href="http://www.shanghaitech.edu.cn/eng/">Shanghaitech, Shanghai</a></div>
+                <h3><span class="emph">本科</span> 计算机科学与技术</h3>
+                <div><a href="http://www.shanghaitech.edu.cn/">上海科技大学</a></div>
 
                 <div class="row">
-                    <div class="col light">Shanghai, China</div>
-                    <div class="col-right light	">September 2018 - July 2022</div>
+                    <div class="col light">中国上海</div>
+                    <div class="col-right light	">2018年9月 - 2022年6月</div>
                 </div>
             </div>
             <div class="section-text col-right">
-                <h3><span class="emph">Ph.D. Student</span> in Computer Science and Engineering
+                <h3><span class="emph">Ph.D.学生</span> 计算机科学与技术
                 </h3>
-                <div><a href="https://ucsc.edu/">UC Santa Cruz, California</a></div>
+                <div><a href="https://ucsc.edu/">加州大学圣克鲁兹分校</a></div>
 
                 <div class="row">
-                    <div class="col light">Santa Cruz, California</div>
-                    <div class="col-right light	">October 2022 - July 2028</div>
+                    <div class="col light">圣克鲁兹, 加利福尼亚</div>
+                    <div class="col-right light	">2022年8月 - 2028年6月</div>
                 </div>
             </div>
         </div>
         <div class="section row">
-            <h2 class="col">Industrial Experiences</h2>
+            <h2 class="col">实习</h2>
             <div class="section-text col-right">
-                <h3><a href="#"><span class="emph">Serving</span> for HFT team by HPC automated DevOps stack</a></h3>
-                <div><a href="https://www.jumptrading.com/">Jump Trading, Shanghai</a></div>
+                <div><a href="#">服务高性能自动化运维于低延时交易公司</a></div>
+                <div><a href="https://www.jumptrading.com/">跃申，上海</a></div>
 
                 <div class="row">
-                    <div class="col light">Shanghai, China</div>
-                    <div class="col-right light	">June 2020 - July 2020 </div>
+                    <div class="col light">中国上海</div>
+                    <div class="col-right light	">2020年6月 - 2020年9月</div>
                 </div>
 
                 <div>
                     <ul class="desc">
-                        <li>High Frequency Trade Order Book simulation applying Linear.Regression Method.</li>
-                        <li>Applied salt and jinja to automate scheduling of jobs and assigning affinity of cpu cores in
-                            Linux DevOps.</li>
-                        <li>Applied gobidng of <a href="https://github.com/iovisor/gobpf">gobpf</a> to try IOVisor
-                            stuff.</li>
+                        <li>弄了个Linear Regression进行高频交易盘账模拟。</li>
+                        <li>学习了个salt和jinja在Linux DevOps的应用，又搞了个自动调度作业和分配cpu核心绑定。</li>
+                        <li>丢下个没做完的eBPF的gobinding io侦测项目。</li>
 
                 </div>
 
+            </div>
+        </div>
 
+        <div class="section row">
+            <h2 class="col">研究</h2>
+            <div class="section-text col-right">
                 <div class="row">
                     <div class="col">
-                        <h3><a href="https://hpc.geekpie.club">GeekPie_HPC @ ShanghaiTech</a></h3>
+                        <h3><a href="https://hpc.geekpie.club">GeekPie_HPC @ 上科大</a></h3>
                     </div>
                 </div>
                 <div class="row subsection">
-                    <div class="emph col"> Leader</div>
-                    <div class="col-right light">September 2019 - November 2021</div>
+                    <div class="emph col"> 队长</div>
+                    <div class="col-right light">2019年12月 - 2021年11月</div>
                 </div>
-                <div>Established a team of 16 undergraduate students for HPC related research. Navigated the first
-                    research funding from Inspur and Nvidia. Continually preparing and aiming for the top-tier student
-                    supercomputing competitions, including <a href="http://www.asc-events.org/ASC20-21/">ASC</a>,<a
-                        href="https://www.businesswire.com/news/home/20201210005074/en/HPC-AI-Advisory-Council-Announces-Student-Teams-Competing-in-the-11th-Annual-ISC-HPCAIAC-Student-Cluster-Competition">ISC</a>
-                    and <a href="https://studentclustercompetition.us/2020/Teams/Team08/index.html">SC</a>.
+                <div>服务于培养凑不齐人数的对System有兴趣的本科生组成的HPC相关调参数团队培训。不断准备并争取参加ASC、ISC、SC等顶级学生超算比赛并被THU打败。
                 </div>
                 <ul class="desc">
-                    <li>Optimized a parallel quantum computer simulater <a
-                            href="https://github.com/QuEST-Kit/QuEST">QuEST</a> by reducing the cache-miss rate and
-                        introducing AVX2/AVX512 vectorization for CPU part and adopting <a
-                            href="https://developer.nvidia.com/nccl">NCCL</a> comunication infro for GPU part.</li>
-                    <li>Compiled and distributed climate simulator <a href="http://www.cesm.ucar.edu/">CESM</a> on Azure
-                        with automated scheduling.</li>
-                    <li>Optimized a Profiler of MPI alltoallv called <a
-                            href="https://github.com/geekpiehpc/collective_profiler">collective_profiler</a> by a Nvidia
-                        Architect Geoffroy Vallee.</li>
-                    <li>Added a parallel I/O Middleware for <a
-                            href="https://www.mmm.ucar.edu/weather-research-and-forecasting-model">WRF</a> which
-                        increase around 30% of the performance.</li>
-                    <li>Applied card binder on 8 card A100 with NVLink to quantum espresso and HPL/HPCG, <a
-                            href="https://docs.microsoft.com/en-us/azure/virtual-machines/nda100-v4-series">Standard_ND96asr_v4</a>
-                        which top the board.</li>
+                    <li>改了并行量子计算机模拟器的GPU MPI版。</li>
+                    <li>在Azure上编译和分布式气候模拟器<i>CESM</i>，并进行自动调度。</li>
+                    <li>优化了一个英伟达内部用于优化OSU中MPI alltoallv 的项目。</li>
+                    <li>加了一个PLFS，WRF不小心增加了30%性能，虽然还是打不过调参。</li>
+            </div>
+            <div class="section-text col-right">
+                <div class="row">
+                    <div class="col">
+                        <h3><a href="https://wiki.geekpie.club/"></a></h3>
+                    </div>
+                </div>
+                <div class="row subsection">
+                    <div class="row">
+                        <div class="col">
+                            <h3><a href="http://s3l.shanghaitech.edu.cn/">System lab @ ShanghaiTech</a></h3>
+                        </div>
+                    </div>
+                    <div class="emph col">RA实习</div>
+                    <div class="col-right light">2019年7月 - 2021年1月</div>
+                </div>
+                <div>认真做了很多，但受限于课业太容易Panic了，很多都没时间做完了，这学校太PUA了。
+                </div>
+                <ul class="desc">
+                    <div>
+                        <ul class="desc">
+                            <li>跑了跑foolbox和IBM-ART的实验，研究深度神经网络的对抗性样本检测。</li>
+                            <li>看了看Diem的Move Spec，全靠带，暂时没产出。</li>
+                            <li>搞了搞MDS on AEP，总之都在测时延。</li>
+                    </div>
 
             </div>
-        </div>
-        <div class="section row">
-            <h2 class="col">Research Interests</h2>
-            <div class="section-text col-right row">
-                <ul class="skills" style="width:25%">
-                    <li>Computer System (Arch)</li>
-                    <li>Blockchain</li>
-                    <li>Reinforcement Learning</li>
-                </ul>
-                <ul class="skills" style="width:35%">
-                    <li>High Performance Computing</li>
-                    <li>GPGPU</li>
-                    <li>Symbolic Execution</li>
-                    <li>Programming Language</li>
-                </ul>
-            </div>
-        </div>
-        <div class="section row">
-            <h2 class="col">Research Experiences</h2>
+
             <div class="section-text col-right">
                 <div class="row subsection">
                     <div class="row">
                         <div class="col">
-                            <h3><a href="http://s3l.shanghaitech.edu.cn/">System Lab</a><a
-                                    href="https://toast-lab.gitee.io"> @ ShanghaiTech</a></h3>
+                            <h3><a href="http://mir.cs.illinois.edu/marinov/students">Darko's team @ UIUC</a></h3>
                         </div>
                     </div>
-                    <div class="emph col">Research Assistant Intern</div>
-                    <div class="col-right light">July 2019 - June 2021</div>
-
+                    <div class="emph col">REU</div>
+                    <div class="col-right light">2021年7月 - 2021年9月</div>
                     <ul class="desc">
                 </div>
+                <div> Darko是个很nice的人。 </div>
                 <div>
                     <ul class="desc">
-                        <li>Researching <a href="#publication">Adversarial Sample Detection</a> for Deep Neural
-                            Network
-                            using foolbox and
-                            IBM-ART
-                            to improve accuracy of object recognition to prevent impostors from hacking into
-                            systems.
-                        </li>
-                        <li>Researching MOVE language in Libra currency source code to protect against Arithmetic
-                            Overflow, Timestamp Dependency.</li>
-                        <li>Understanding the real access mechanism of Memory Mode Optane Memory and XPBuffer by
-                            reverse-engineering methods.</li>
-
-                </div>
-
-                <div class="row subsection">
-                    <div class="row">
-                        <div class="col">
-                            <h3><a href="http://mir.cs.illinois.edu/marinov/">Darko Marinov's Lab</a><a
-                                    href="https://illinois.edu"> @ UIUC</a></h3>
-                        </div>
-                    </div>
-                    <div class="emph col"><small>Research Experiences for Undergraduate</small></div>
-                    <div class="col-right light">July 2021 - September 2021</div>
-
-                    <ul class="desc">
-                </div>
-                <div>
-                    <ul class="desc">
-                        <li>Investigating Order-Dependent Flaky Tests.</li>
+                        <li>主要就在跑test，学了点硬核bash和jvm插桩。</li>
                 </div>
             </div>
         </div>
-
         <div class="section row">
-            <h2 class="col" id="publication">Publications</h2>
+            <h2 class="col" id="publication">出版物</h2>
             <div class="section-text col-right">
                 <div class="row">
                     <div class="col">
                         <h3>Attack as Defense: Characterizing Adversarial Examples using Robustness </h3>
                     </div>
                     <div class="btn-links mb-3">
-                        <div class="col-right light">July 2021</div>
+                        <div class="col-right light">2021年7月</div>
                         <a class="btn btn-outline-primary my-1 mr-1" href="https://conf.researchr.org/home/issta-2021"
                             target="_blank" rel="noopener">ISSTA21</a>
                         <a class="btn btn-outline-primary my-1 mr-1" href="https://arxiv.org/pdf/2103.07633.pdf"
                             target="_blank" rel="noopener">PDF</a>
-                        <a class="btn btn-outline-primary my-1 mr-1" href=https://victoryang00.cn/about/cite.bib>
+                        <a class="btn btn-outline-primary my-1 mr-1 btn-sm js-cite-modal" onclick="jsCite(this)"
+                            data-filename="/about/cite.bib">
                             Cite</a>
-                        <!-- <a class="btn btn-outline-primary my-1 mr-1" href="https://databank.illinois.edu/datasets/IDB-6738796" target="_blank" rel="noopener">Dataset</a> -->
-                        <!-- <a class="btn btn-outline-primary my-1 mr-1" href="/slides/firm.pdf" target="_blank" rel="noopener">Slides</a> -->
-                        <!-- <a class="btn btn-outline-primary my-1 mr-1" href="https://www.usenix.org/conference/osdi20/presentation/qiu" target="_blank" rel="noopener">Video</a></div> -->
-
                         <div class="col light"><a href="http://s3l.shanghaitech.edu.cn/people/zhezhao/">Zhe
                                 Zhao</a>, Guangke Chen, Jingyi Wang, <b>Yiwei Yang</b>, Fu Song,
                             Jun Sun
@@ -358,7 +313,28 @@ CoffeeTime.foreach(println)
                             parallelization” by SCC Team from ShanghaiTech University</h3>
                     </div>
                     <div class="btn-links mb-3">
-                        <div class="col-right light">November 2021</div>
+                        <div class="col-right light">2021年11月</div>
+                        <a class="btn btn-outline-primary my-1 mr-1" href="https://www.computer.org/csdl/journal/td"
+                            target="_blank" rel="noopener">TPDS</a>
+                        <a class="btn btn-outline-primary my-1 mr-1"
+                            href="https://ieeexplore.ieee.org/abstract/document/9612082" target="_blank"
+                            rel="noopener">PDF</a>
+                        <a class="btn btn-outline-primary my-1 mr-1 js-cite-modal"
+                            data-filename="/about/cite_memxct.bib">
+                            Cite</a>
+                        <div class="col light">
+                            Yuchen Liu, Yixuan Meng, <b>Yiwei Yang</b>, Kaiyuan Xu, Zijun Xu, Tianyuan Wu, Shu
+                            Yin
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h3>Critique of "A Parallel Framework for Constraint-Based Bayesian Network Learning via Markov
+                            Blanket Discovery" by SCC Team from ShanghaiTech University</h3>
+                    </div>
+                    <div class="btn-links mb-3">
+                        <div class="col-right light">2022年11月</div>
                         <a class="btn btn-outline-primary my-1 mr-1" href="https://www.computer.org/csdl/journal/td"
                             target="_blank" rel="noopener">TPDS</a>
                         <a class="btn btn-outline-primary my-1 mr-1"
@@ -375,8 +351,8 @@ CoffeeTime.foreach(println)
                         <!-- <a class="btn btn-outline-primary my-1 mr-1" href="/slides/firm.pdf" target="_blank" rel="noopener">Slides</a> -->
                         <!-- <a class="btn btn-outline-primary my-1 mr-1" href="https://www.usenix.org/conference/osdi20/presentation/qiu" target="_blank" rel="noopener">Video</a></div> -->
                         <div class="col light">
-                            Yuchen Liu, Yixuan Meng, <b>Yiwei Yang</b>, Kaiyuan Xu, Zijun Xu, Tianyuan Wu, Shu
-                            Yin
+                            Li Guancheng, Cao Songhui, Zhao Chuyi, Zhang Siyuan, Jing Haotian, Ji Yuchen, Li Zecheng,
+                            Cheng Jiajun, <b>Yiwei Yang</b>, Yin Shu
                         </div>
                     </div>
                 </div>
@@ -385,42 +361,60 @@ CoffeeTime.foreach(println)
             </div>
 
         </div>
-
         <div class="section row">
-            <h2 class="col">Highlighted Projects</h2>
+            <h2 class="col">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">重点项目</font>
+                </font>
+            </h2>
 
             <div class="section-text col-right">
 
                 <div class="row subsection">
                     <div class="emph col">
-                        <h3><a href="https://github.com/0x238e/Vchain"><span style="font-weight:700">A
-                                    Blockchain
-                                    and Telematics Based Driver Assistance Decision and Insurance Assessment
-                                    System</span><br><span
-                                    style="font-weight:100; font-size: 14px">(https://github.com/0x238e/Vchain)</span></a>
+                        <h3><a href="https://github.com/0x238e/Vchain"><span style="font-weight:700">
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">基于区块链和远程信息处理的驾驶员辅助决策和保险评估系统</font>
+                                    </font>
+                                </span><br><span style="font-weight:100; font-size: 14px">
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">(https://github.com/0x238e/Vchain)</font>
+                                    </font>
+                                </span></a>
                         </h3>
                     </div>
-                    <div class="col-right light">April 2019</div>
+                    <div class="col-right light">
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">2019 年 4 月</font>
+                        </font>
+                    </div>
                 </div>
                 <div>
                     <ul class="desc">
-                        The value of VChain comes from the application of driver-assisted decision making
-                        and the
-                        innovation of the business model, the former relying on blockchain security and
-                        computation
-                        without latency, and the latter as a result of data aggregation and movement.
-                        <li>In one scope, multiple car sensors and their data transactions are trusted by
-                            the
-                            blockchain created by CPChain.</li>
-                        <li>Artificial intelligence decision making, based on IoT big data. Heterogeneous
-                            data
-                            interoperability, resulting in big data aggregation.</li>
-                        <li>Interaction and application of data assets, data assets are leveraging the
-                            verifiable
-                            characteristics of the main chain to benefit emerging business models such as
-                            insurance
-                            valuation.</li>
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">
+                                VChain的价值来自于驾驶辅助决策的应用和商业模式的创新，前者依赖于区块链安全和无延迟计算，后者来自于数据聚合和移动。
+                            </font>
+                        </font>
+                        <li>
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">在一个范围内，CPChain 创建的区块链信任多个汽车传感器及其数据交易。</font>
+                            </font>
+                        </li>
+                        <li>
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">基于物联网大数据的人工智能决策。</font>
+                                <font style="vertical-align: inherit;">异构数据互操作，导致大数据聚合。</font>
+                            </font>
+                        </li>
+                        <li>
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">数据资产的交互与应用，数据资产正在利用主链的可验证特性来造福保险估值等新兴商业模式。</font>
+                            </font>
+                        </li>
+                    </ul>
                 </div>
+
                 <div class="grid">
 
                     <div class="grid-item" style="height:220px;width:210px;">
@@ -491,7 +485,7 @@ CoffeeTime.foreach(println)
                                         style="-webkit-line-clamp: 2;"><span
                                             class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0"><small
                                                 class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">RV
-                                                Soul Knight</small></span>
+                                                元气骑士</small></span>
                                     </div>
 
                                 </div>
@@ -633,7 +627,7 @@ CoffeeTime.foreach(println)
                                     <div style="text-align: left;"><span
                                             class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0"><span
                                                 class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">MCTS
-                                                Gobang</span></span></div>
+                                                五子棋</span></span></div>
                                 </div>
                             </a></div>
                     </div>
@@ -777,48 +771,38 @@ CoffeeTime.foreach(println)
             </div>
 
 
-
         </div>
-        <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js
-            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin=anonymous></script>
-        <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js
-            integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script>
-        <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js
-            integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script>
-        <script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js
-            integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin=anonymous></script>
-        <script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js
-            integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin=anonymous></script>
-        <script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js></script>
-        <script src=https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js
-            integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin=anonymous></script>
-        <script>const code_highlighting = true;</script>
-        <script>const isSiteThemeDark = false;</script>
-        <script>const search_config = { "indexURI": "/index.json", "minLength": 1, "threshold": 0.3 }; const i18n = { "no_results": "No results found", "placeholder": "Search...", "results": "results found" }; const content_type = { 'post': "Posts", 'project': "Projects", 'publication': "Publications", 'talk': "Talks" };</script>
-        <script id=search-hit-fuse-template type=text/x-template>
-                <div class="search-hit" id="summary-{{key}}">
-                <div class="search-hit-content">
-                  <div class="search-hit-name">
-                    <a href="{{relpermalink}}">{{title}}</a>
-                    <div class="article-metadata search-hit-type">{{type}}</div>
-                    <p class="search-hit-description">{{snippet}}</p>
-                  </div>
-                </div>
-                </div>
-            </script>
-        <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js
-            integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
-        <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js
-            integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
+
         <div class=container>
             <footer class=site-footer>
             </footer>
         </div>
-        <div id=modal class="modal fade" role=dialog>
+        <footer>
+            <p><small>沪ICP备18048797号-1</small></p>
+        </footer>
+    </div>
+    <div id="modal" class="modal fade" role="dialog" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Cite</h5><button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <pre><code class="tex hljs"></code></pre>
+                </div>
+                <div class="modal-footer"><a class="btn btn-outline-primary my-1 js-copy-cite" href="#"
+                        target="_blank"><i class="fas fa-copy"></i>Copy</a>
+                    <a class="btn btn-outline-primary my-1 js-download-cite" href=""
+                        target="_blank"><i class="fas fa-download"></i>Download</a>
+                    <div id="modal-error"></div>
+                </div>
+            </div>
         </div>
+    </div>
 </body>
-<footer>
-    <p><small>沪ICP备18048797号-1</small></p>
-</footer>
+
+
 
 </html>
