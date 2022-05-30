@@ -72,16 +72,16 @@
             /*border-radius: 100%;*/
         }
     </style>
-    <link rel=alternate href=/index.xml type=application/rss+xml title="Yiwei Yang @ShanghaiTech CS">
+    <link rel=alternate href=/index.xml type=application/rss+xml title="Yiwei Yang @UCSC CS">
     <link rel=manifest href=/index.webmanifest>
     <link rel=icon type=image/png href=/about/victoryang00.png>
     <link rel=apple-touch-icon type=image/png href=/about/victoryang00.png>
     <link rel=canonical href=https://victoryang00.cn />
     <meta property=twitter:card content=summary>
-    <meta property=og:site_name content="Yiwei Yang @ShanghaiTech CS">
+    <meta property=og:site_name content="Yiwei Yang @UCSC CS">
     <meta property=og:url content=https://victoryang00.cn />
-    <meta property=og:title content="Yiwei Yang @ShanghaiTech CS">
-    <meta property=og:description content="Senior Undergraduate in Computer Science">
+    <meta property=og:title content="Yiwei Yang @UCSC CS">
+    <meta property=og:description content="First Year Ph.D Student @BaskinEng">
     <meta property=og:image content=https://victoryang00.cn/about/image-20210419023404114.png>
     <meta property=twitter:image content=https://victoryang00.cn/about/image-20210419023404114.png>
 </head>
@@ -163,7 +163,17 @@
                 Java Flaky Test under supervision of <a href="http://mir.cs.illinois.edu/marinov/">Darko</a>
                 and <a href="https://cs.gmu.edu/~winglam/">Wing</a>
 
-                <pre><code class="language-rust mycode">
+                <pre><code class="language-rust mycode">fn research_no_failure()->Result < Paper, Error > {
+    let paper = Paper::new();
+    loop{
+        asm!("clflush" :: "r" (&paper.iter()) : "rax", "rbx", "rcx", "rdx": "volatile" );
+        __atomic_thread_fence(__ATOMIC_SEQ_CST);
+        if (paper.is_valid()){
+            break;
+        }
+    }
+    Ok(paper)
+}
 </code></pre>
             </div>
         </div>
@@ -272,7 +282,34 @@
                         <li>MPI</li>
                         <li>LLVM</li>
                         <li>Soot</li>
-                    </ul>s
+                    </ul>
+                </div>
+            </div>
+            <div class="section row">
+                <h2 class="col">Teaching Assistant</h2>
+                <div class="section-text col-right">
+                    <div class="row">
+                        <div class="col">
+                            <h3>ShanghaiTech CS131: Compiler</h3>
+                        </div>
+                        <div style="white-space: pre-line;"><a></a></div>
+                        <div style="white-space: pre-line;"><a></a></div>
+                        <div class="btn-links mb-3">
+                            <div class="col-right light">Spring 2021/2022</div>
+                            <a class="btn btn-outline-primary my-1 mr-1"
+                                href="https://github.com/Chocopy-LLVM/chocopy-llvm/" target="_blank"
+                                rel="noopener">ChocoPy-LLVM</a>
+                            <a class="btn btn-outline-primary my-1 mr-1"
+                                href="https://github.com/victoryang00/CS131-COOL-Compiler" target="_blank"
+                                rel="noopener">COOL</a>
+                            <a class="btn btn-outline-primary my-1 mr-1"
+                                href="https://github.com/victoryang00/CS131-discussion" target="_blank"
+                                rel="noopener">Discussion</a>
+                            <a class="btn btn-outline-primary my-1 mr-1"
+                                href="https://space.bilibili.com/3007867/channel/seriesdetail?sid=2090886&ctype=0" target="_blank"
+                                rel="noopener">Video</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="section row">
@@ -293,14 +330,15 @@
                     <div>
                         <ul class="desc">
                             <li>Researching <a href="#publication">Adversarial Sample Detection</a> for Deep Neural
-                                Network
+                                Familiar Frameworks Network
                                 using foolbox and
                                 IBM-ART
                                 to improve accuracy of object recognition to prevent impostors from hacking into
                                 systems.
-                            </li>
+                                Research Experiences </li>
                             <li>Researching MOVE language in Libra currency source code to protect against Arithmetic
-                                Overflow, Timestamp Dependency.</li>
+                                Overflow, Timestamp Dependency with <a href="https://github.com/leaferx">LeaferX</a>.
+                            </li>
                             <li>Understanding the real access mechanism of Memory Mode Optane Memory and XPBuffer by
                                 reverse-engineering methods.</li>
                     </div>
