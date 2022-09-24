@@ -9,9 +9,27 @@
         content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
     <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!--- <link rel="stylesheet" href="https://haoran-qiu.com/css/academic.min.5ac49d52d669340d29cb50b00bb7867f.css"> --->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css"
-        integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css"
+        integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"
+        integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js"
+        integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"
+        integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js"
+        integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js"
+        integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    <script src="https://haoran-qiu.com/js/academic.min.4e51017b38c7ebaadd7e25fc9503f88c.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css"
+        integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    <script async="" src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js"
+        integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g=="
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 500px)" href="about/style_tiny.css">
     <link rel="stylesheet" type="text/css" media="screen and (min-device-width: 500px)" href="about/style.css">
     <link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,700|Source+Sans+Pro:400,400i"
@@ -61,29 +79,6 @@
                 }
             }
         }
-        function jsCite(e) {
-            let filename = e.attributes['data-filename'];
-            let modal = document.getElementById('modal');
-           
-            console.log("Inside function");
-            var rawFile = new XMLHttpRequest();
-            rawFile.open("GET", filename, true);
-            rawFile.onreadystatechange = function ()
-            {
-                if(rawFile.readyState === 4)
-                {
-                    if(rawFile.status === 200 || rawFile.status == 0)
-                    {
-                        var allText = rawFile.responseText;
-                        modal.innerHTML = allText;
-        
-                    }
-                }
-            }
-            rawFile.send(null);
-            $('.js-download-cite').attr('href', filename);
-            modal.modal('show');
-        }
     </script>
     <style>
         .demo {
@@ -105,16 +100,15 @@
     <meta property=og:url content=https://victoryang00.cn />
     <meta property=og:title content="杨易为 @上科大计算机">
     <meta property=og:description content="Senior Undergraduate in Computer Science">
-    <meta property=og:image content=https://img.victoryang00.cn/image-20210419023404114.png>
-    <meta property=twitter:image content=https://img.victoryang00.cn/image-20210419023404114.png>
+    <meta property=og:image content=/about/yiwei.png>
+    <meta property=twitter:image content=/about/yiwei.png>
 </head>
 
 <body>
     <div class="page">
         <div class="section row">
             <h1 class="col">
-                <a href="/about/image-20210419023404114.png"> <img class="demo"
-                        src="/about/image-20210419023404114.png"></a>
+                <a href="/about/yiwei.png"> <img class="demo" src="/about/yiwei.png"></a>
                 <a
                     class="container">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br></a>
                 <span class="name">杨易为</span> (Victor)
@@ -193,7 +187,7 @@
 
                 <div class="row">
                     <div class="col light">圣克鲁兹, 加利福尼亚</div>
-                    <div class="col-right light	">2022年8月 - 2028年6月</div>
+                    <div class="col-right light	">2022年7月 - 2028年7月</div>
                 </div>
             </div>
         </div>
@@ -239,11 +233,11 @@
                             href="https://github.com/victoryang00/CS131-discussion" target="_blank"
                             rel="noopener">Discussion</a>
                         <a class="btn btn-outline-primary my-1 mr-1"
-                            href="https://space.bilibili.com/3007867/channel/seriesdetail?sid=2090886&ctype=0" target="_blank"
-                            rel="noopener">Video</a>
+                            href="https://space.bilibili.com/3007867/channel/seriesdetail?sid=2090886&ctype=0"
+                            target="_blank" rel="noopener">Video</a>
                         <a class="btn btn-outline-primary my-1 mr-1"
-                            href="https://docs.google.com/presentation/d/1LPZZX-nodPAX42hGFEIuUZEe_08StKkm/edit?usp=sharing&ouid=112951909136094460728&rtpof=true&sd=true" target="_blank"
-                            rel="noopener">Talk@RVSC22</a>
+                            href="https://docs.google.com/presentation/d/1LPZZX-nodPAX42hGFEIuUZEe_08StKkm/edit?usp=sharing&ouid=112951909136094460728&rtpof=true&sd=true"
+                            target="_blank" rel="noopener">Talk@RVSC22</a>
                     </div>
                 </div>
             </div>
@@ -327,9 +321,12 @@
                             target="_blank" rel="noopener">ISSTA21</a>
                         <a class="btn btn-outline-primary my-1 mr-1" href="https://arxiv.org/pdf/2103.07633.pdf"
                             target="_blank" rel="noopener">PDF</a>
-                        <a class="btn btn-outline-primary my-1 mr-1 btn-sm js-cite-modal" onclick="jsCite(this)"
-                            data-filename="/about/cite.bib">
+                        <a class="btn btn-outline-primary my-1 mr-1 js-cite-modal" href="javascript:void(0)"
+                            data-filename="/about/cite_issta21.bib">
                             Cite</a>
+                        <a class="btn btn-outline-primary my-1 mr-1"
+                            href="https://github.com/S3L-official/attack-as-detection" target="_blank"
+                            rel="noopener">Code</a>
                         <div class="col light"><a href="http://s3l.shanghaitech.edu.cn/people/zhezhao/">Zhe
                                 Zhao</a>, Guangke Chen, Jingyi Wang, <b>Yiwei Yang</b>, Fu Song,
                             Jun Sun
@@ -346,12 +343,13 @@
                         <div class="col-right light">2021年11月</div>
                         <a class="btn btn-outline-primary my-1 mr-1" href="https://www.computer.org/csdl/journal/td"
                             target="_blank" rel="noopener">TPDS</a>
-                        <a class="btn btn-outline-primary my-1 mr-1"
-                            href="https://ieeexplore.ieee.org/abstract/document/9612082" target="_blank"
-                            rel="noopener">PDF</a>
-                        <a class="btn btn-outline-primary my-1 mr-1 js-cite-modal"
-                            data-filename="/about/cite_memxct.bib">
+                        <a class="btn btn-outline-primary my-1 mr-1" href="https://ieeexplore.ieee.org/document/9882379"
+                            target="_blank" rel="noopener">PDF</a>
+                        <a class="btn btn-outline-primary my-1 mr-1 js-cite-modal" href="javascript:void(0)"
+                            data-filename=/about/cite_memxct.bib>
                             Cite</a>
+                        <a class="btn btn-outline-primary my-1 mr-1" href="https://github.com/geekpiehpc/SC20-MemXCT"
+                            target="_blank" rel="noopener">Code</a>
                         <div class="col light">
                             Yuchen Liu, Yixuan Meng, <b>Yiwei Yang</b>, Kaiyuan Xu, Zijun Xu, Tianyuan Wu, Shu
                             Yin
@@ -364,14 +362,17 @@
                             Blanket Discovery" by SCC Team from ShanghaiTech University</h3>
                     </div>
                     <div class="btn-links mb-3">
-                        <div class="col-right light">2022年11月</div>
+                        <div class="col-right light">2022年9月</div>
                         <a class="btn btn-outline-primary my-1 mr-1" href="https://www.computer.org/csdl/journal/td"
                             target="_blank" rel="noopener">TPDS</a>
                         <a class="btn btn-outline-primary my-1 mr-1"
-                            href="https://ieeexplore.ieee.org/abstract/document/9612082" target="_blank"
+                            href="https://ieeexplore.ieee.org/document/9882379" target="_blank"
                             rel="noopener">PDF</a>
-                        <a class="btn btn-outline-primary my-1 mr-1" href=https://victoryang00.cn/about/cite_memxct.bib>
+                        <a class="btn btn-outline-primary my-1 mr-1 js-cite-modal" href="javascript:void(0)"
+                            data-filename=/about/cite_ramble.bib>
                             Cite</a>
+                        <a class="btn btn-outline-primary my-1 mr-1" href="https://github.com/geekpiehpc/SC21-ramBLE"
+                            target="_blank" rel="noopener">Code</a>
                         <!-- <a class="btn btn-outline-primary my-1 mr-1" href="https://arxiv.org/pdf/2103.07633.pdf"
                                         target="_blank" rel="noopener">PDF</a> -->
                         <!-- <a class="btn btn-outline-primary my-1 mr-1"
@@ -594,8 +595,8 @@
                         <div aria-hidden="true"
                             class="css-1dbjc4n r-1igl3o0 r-pm2fo r-zmljjp r-rull8r r-qklmqi r-1adg3ll"
                             id="id__5zty9w4nfu" data-testid="card.layoutLarge.media"><a
-                                href="https://github.com/Chocopy-LLVM/chocopy-llvm"
-                                rel="noopener noreferrer" target="_blank" role="link"
+                                href="https://github.com/Chocopy-LLVM/chocopy-llvm" rel="noopener noreferrer"
+                                target="_blank" role="link"
                                 class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-1ny4l3l r-1udh08x r-o7ynqc r-6416eg r-13qz1uu">
                                 <div class="css-1dbjc4n r-1adg3ll r-1udh08x">
                                     <div class="r-1adg3ll r-13qz1uu"></div>
@@ -613,8 +614,8 @@
                             </a></div>
 
                         <div class="css-1dbjc4n" id="id__hkxwe54spsu"><a
-                                href="https://github.com/Chocopy-LLVM/chocopy-llvm"
-                                rel="noopener noreferrer" target="_blank" role="link"
+                                href="https://github.com/Chocopy-LLVM/chocopy-llvm" rel="noopener noreferrer"
+                                target="_blank" role="link"
                                 class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-18u37iz r-16y2uox r-1wtj0ep r-1ny4l3l r-o7ynqc r-6416eg">
                                 <div class="css-1dbjc4n r-16y2uox r-1wbh5a2 r-z5qs1h r-1777fci r-kzbkwu r-1e081e0 r-ttdzmv"
                                     data-testid="card.layoutLarge.detail">
@@ -807,6 +808,27 @@
             <footer class=site-footer>
             </footer>
         </div>
+        <div id="modal" class="modal fade" role="dialog" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Cite</h5><button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                            <span aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <pre><code class="tex hljs">
+            </code></pre>
+                    </div>
+                    <div class="modal-footer"><a class="btn btn-outline-primary my-1 js-copy-cite" href="#"
+                            target="_blank"><i class="fas fa-copy"></i>Copy</a>
+                        <a class="btn btn-outline-primary my-1 js-download-cite" href="/about/issta21.bib"
+                            target="_blank"><i class="fas fa-download"></i>Download</a>
+                        <div id="modal-error"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <footer>
             <div><small><a href='https://asplos.dev/' target='_blank' class='url'>asplos.dev</a> 也可以访问此网站. ASPLOS 短链接: <code>https://asplos.dev/&lt;last_two_digit_of_year&gt;</code>, 比如
                 <a href='https://asplos.dev/22' target='_blank' class='url'>asplos.dev/22</a>.</small>
@@ -826,8 +848,8 @@
                 </div>
                 <div class="modal-footer"><a class="btn btn-outline-primary my-1 js-copy-cite" href="#"
                         target="_blank"><i class="fas fa-copy"></i>Copy</a>
-                    <a class="btn btn-outline-primary my-1 js-download-cite" href=""
-                        target="_blank"><i class="fas fa-download"></i>Download</a>
+                    <a class="btn btn-outline-primary my-1 js-download-cite" href="" target="_blank"><i
+                            class="fas fa-download"></i>Download</a>
                     <div id="modal-error"></div>
                 </div>
             </div>

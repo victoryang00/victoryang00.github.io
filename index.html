@@ -10,8 +10,16 @@
         content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
     <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css"
+        integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css"
+        integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    <script async="" src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js"
+        integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g=="
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!--- <link rel="stylesheet" href="https://haoran-qiu.com/css/academic.min.5ac49d52d669340d29cb50b00bb7867f.css"> --->
     <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 500px)" href="about/style_tiny.css">
     <link rel="stylesheet" type="text/css" media="screen and (min-device-width: 500px)" href="about/style.css">
     <link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,700|Source+Sans+Pro:400,400i"
@@ -29,6 +37,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
     <!-- and it's easy to individually load additional languages -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/languages/scala.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"
+        integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js"
+        integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"
+        integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js"
+        integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js"
+        integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    <script src="https://haoran-qiu.com/js/academic.min.4e51017b38c7ebaadd7e25fc9503f88c.js"></script>
     <script>hljs.highlightAll();</script>
     <script>
         function myFunction() {
@@ -82,16 +103,15 @@
     <meta property=og:url content=https://victoryang00.cn />
     <meta property=og:title content="Yiwei Yang @UCSC CS">
     <meta property=og:description content="First Year Ph.D Student @BaskinEng">
-    <meta property=og:image content=https://victoryang00.cn/about/image-20210419023404114.png>
-    <meta property=twitter:image content=https://victoryang00.cn/about/image-20210419023404114.png>
+    <meta property=og:image content=/about/yiwei.png>
+    <meta property=twitter:image content=/about/yiwei.png>
 </head>
 
 <body>
     <div class="page">
         <div class="section row">
             <h1 class="col">
-                <a href="/about/image-20210419023404114.png"> <img class="demo"
-                        src="/about/image-20210419023404114.png"></a>
+                <a href="/about/yiwei.png"> <img class="demo" src="/about/yiwei.png"></a>
 
                 <a
                     class="container">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br></a>
@@ -153,10 +173,10 @@
                 I'm a first-year Computer Science System Ph.D student <a
                     href="https://engineering.ucsc.edu/">@BaskinEng</a>. I'm
                 honored to be advised by <a href="https://arquinn.github.io/">Andrew Quinn</a>, and hacking on
-                cutting-edge HW/SW co-design. You can call me a "system" guy, mainly focusing on speeding up programs
-                on machines. Previously, I'm an undergraduate <a
-                    href="https://sist.shanghaitech.edu.cn/">@ShanghaiTech</a>, writing <a
-                    href="https://chocopy-llvm.github.io/chocopy-llvm/">ChocoPy-LLVM</a> and researching FM/AISec
+                cutting-edge HW/SW co-design. My main focus is the reliability and the speed of new system like CXL
+                based on observability of kernel and outer devices.
+                Previously, I'm an undergraduate <a href="https://sist.shanghaitech.edu.cn/">@ShanghaiTech</a>, writing
+                <a href="https://chocopy-llvm.github.io/chocopy-llvm/">ChocoPy-LLVM</a> and researching FM/AISec
                 for Professors <a href="http://faculty.sist.shanghaitech.edu.cn/faculty/songfu/">Foo</a>, making SCC
                 happen with <a href="https://www.researchgate.net/scientific-contributions/Shu-Yin-69825172">Shu</a> and
                 researching on PMEM <a href="https://toast-lab.tech/people/">@Toast</a>. For UIUC ReU 2021, I learned
@@ -189,7 +209,7 @@
         <div class="section row">
             <h2 class="col">Education</h2>
             <div class="section-text col-right">
-                <h3><span class="emph">BEing</span> in Computer Science and Engineering
+                <h3><span class="emph">BEng</span> in Computer Science and Engineering
                 </h3>
                 <div><a href="http://www.shanghaitech.edu.cn/eng/">Shanghaitech, Shanghai</a></div>
 
@@ -205,7 +225,7 @@
 
                 <div class="row">
                     <div class="col light">Santa Cruz, California</div>
-                    <div class="col-right light	">October 2022 - July 2028</div>
+                    <div class="col-right light	">July 2022 - July 2028</div>
                 </div>
             </div>
         </div>
@@ -312,7 +332,7 @@
                                 target="_blank" rel="noopener">Video</a>
                             <a class="btn btn-outline-primary my-1 mr-1"
                                 href="https://docs.google.com/presentation/d/1LPZZX-nodPAX42hGFEIuUZEe_08StKkm/edit?usp=sharing&ouid=112951909136094460728&rtpof=true&sd=true"
-                                target="_blank" rel="noopener">Talk@RVSC22</a>
+                                target="_blank" rel="noopener">RVSC22</a>
                         </div>
                     </div>
                 </div>
@@ -380,12 +400,12 @@
                                 rel="noopener">ISSTA21</a>
                             <a class="btn btn-outline-primary my-1 mr-1" href="https://arxiv.org/pdf/2103.07633.pdf"
                                 target="_blank" rel="noopener">PDF</a>
-                            <a class="btn btn-outline-primary my-1 mr-1" href=https://victoryang00.cn/about/cite.bib>
+                            <a class="btn btn-outline-primary my-1 mr-1 js-cite-modal" href="javascript:void(0)"
+                                data-filename="/about/cite_issta21.bib">
                                 Cite</a>
-                            <!-- <a class="btn btn-outline-primary my-1 mr-1" href="https://databank.illinois.edu/datasets/IDB-6738796" target="_blank" rel="noopener">Dataset</a> -->
-                            <!-- <a class="btn btn-outline-primary my-1 mr-1" href="/slides/firm.pdf" target="_blank" rel="noopener">Slides</a> -->
-                            <!-- <a class="btn btn-outline-primary my-1 mr-1" href="https://www.usenix.org/conference/osdi20/presentation/qiu" target="_blank" rel="noopener">Video</a></div> -->
-
+                            <a class="btn btn-outline-primary my-1 mr-1"
+                                href="https://github.com/S3L-official/attack-as-detection" target="_blank"
+                                rel="noopener">Code</a>
                             <div class="col light"><a href="http://s3l.shanghaitech.edu.cn/people/zhezhao/">Zhe
                                     Zhao</a>, Guangke Chen, Jingyi Wang, <b>Yiwei Yang</b>, Fu Song,
                                 Jun Sun
@@ -403,13 +423,13 @@
                             <a class="btn btn-outline-primary my-1 mr-1" href="https://www.computer.org/csdl/journal/td"
                                 target="_blank" rel="noopener">TPDS</a>
                             <a class="btn btn-outline-primary my-1 mr-1"
-                                href="https://ieeexplore.ieee.org/abstract/document/9612082" target="_blank"
+                                href="https://ieeexplore.ieee.org/document/9882379" target="_blank"
                                 rel="noopener">PDF</a>
-                            <a class="btn btn-outline-primary my-1 mr-1"
-                                href=https://victoryang00.cn/about/cite_memxct.bib>
+                            <a class="btn btn-outline-primary my-1 mr-1 js-cite-modal" href="javascript:void(0)"
+                                data-filename=/about/cite_memxct.bib>
                                 Cite</a>
-                            <!-- <a class="btn btn-outline-primary my-1 mr-1" href="https://arxiv.org/pdf/2103.07633.pdf"
-                                        target="_blank" rel="noopener">PDF</a> -->
+                            <a class="btn btn-outline-primary my-1 mr-1"
+                                href="https://github.com/geekpiehpc/SC20-MemXCT" target="_blank" rel="noopener">Code</a>
                             <!-- <a class="btn btn-outline-primary my-1 mr-1"
                                         href=https://victoryang00.cn/about/cite.bib>
                                         Cite</a> -->
@@ -433,19 +453,13 @@
                             <a class="btn btn-outline-primary my-1 mr-1" href="https://www.computer.org/csdl/journal/td"
                                 target="_blank" rel="noopener">TPDS</a>
                             <a class="btn btn-outline-primary my-1 mr-1"
-                                href="https://ieeexplore.ieee.org/abstract/document/9612082" target="_blank"
+                                href="https://ieeexplore.ieee.org/document/9882379" target="_blank"
                                 rel="noopener">PDF</a>
-                            <a class="btn btn-outline-primary my-1 mr-1"
-                                href=https://victoryang00.cn/about/cite_memxct.bib>
+                            <a class="btn btn-outline-primary my-1 mr-1 js-cite-modal" href="javascript:void(0)"
+                                data-filename=/about/cite_ramble.bib>
                                 Cite</a>
-                            <!-- <a class="btn btn-outline-primary my-1 mr-1" href="https://arxiv.org/pdf/2103.07633.pdf"
-                                        target="_blank" rel="noopener">PDF</a> -->
-                            <!-- <a class="btn btn-outline-primary my-1 mr-1"
-                                        href=https://victoryang00.cn/about/cite.bib>
-                                        Cite</a> -->
-                            <!-- <a class="btn btn-outline-primary my-1 mr-1" href="https://databank.illinois.edu/datasets/IDB-6738796" target="_blank" rel="noopener">Dataset</a> -->
-                            <!-- <a class="btn btn-outline-primary my-1 mr-1" href="/slides/firm.pdf" target="_blank" rel="noopener">Slides</a> -->
-                            <!-- <a class="btn btn-outline-primary my-1 mr-1" href="https://www.usenix.org/conference/osdi20/presentation/qiu" target="_blank" rel="noopener">Video</a></div> -->
+                            <a class="btn btn-outline-primary my-1 mr-1"
+                                href="https://github.com/geekpiehpc/SC21-ramBLE" target="_blank" rel="noopener">Code</a>
                             <div class="col light">
                                 Li Guancheng, Cao Songhui, Zhao Chuyi, Zhang Siyuan, Jing Haotian, Ji Yuchen, Li
                                 Zecheng,
@@ -886,12 +900,32 @@
                 <footer class=site-footer>
                 </footer>
             </div>
-            <div id=modal class="modal fade" role=dialog>
+            <div id="modal" class="modal fade" role="dialog" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Cite</h5><button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true">×</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <pre><code class="tex hljs">
+                </code></pre>
+                        </div>
+                        <div class="modal-footer"><a class="btn btn-outline-primary my-1 js-copy-cite" href="#"
+                                target="_blank"><i class="fas fa-copy"></i>Copy</a>
+                            <a class="btn btn-outline-primary my-1 js-download-cite" href="/about/issta21.bib"
+                                target="_blank"><i class="fas fa-download"></i>Download</a>
+                            <div id="modal-error"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
 </body>
 <footer>
-    <div><small><a href='https://asplos.dev/' target='_blank' class='url'>asplos.dev</a> can also access this cite. ASPLOS short links: access by <code>https://asplos.dev/&lt;last_two_digit_of_year&gt;</code>, e.g.
-        <a href='https://asplos.dev/22' target='_blank' class='url'>asplos.dev/22</a>.</small>
+    <div><small><a href='https://asplos.dev/' target='_blank' class='url'>asplos.dev</a> can also access this cite.
+            ASPLOS short links: access by <code>https://asplos.dev/&lt;last_two_digit_of_year&gt;</code>, e.g.
+            <a href='https://asplos.dev/22' target='_blank' class='url'>asplos.dev/22</a>.</small>
     </div>
     <p><small>沪ICP备18048797号-1</small></p>
 </footer>
