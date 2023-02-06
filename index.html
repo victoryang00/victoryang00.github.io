@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Yiwei Yang (Victor) - Resume</title>
+    <title>Yiwei Yang (Vickie) - Resume</title>
 
     <!--- <meta name="viewport" content="width=device-width, initial-scale=1"> --->
     <meta name="viewport"
@@ -83,6 +83,18 @@
             }
         }
     </script>
+    <style type="text/css">
+        #hover {
+            width: 70%;
+            background-color: #000000;
+            
+        }
+
+        #hover:hover {
+            background-color: rgba(100, 100, 100, 0);
+            visibility:hidden;
+        }
+    </style>
     <style>
         .demo {
             width: 200px;
@@ -90,7 +102,7 @@
             border: 1px solid salmon;
             background-color: salmon;
             border-radius: 50%;
-            /*border-radius: 100%;*/
+            /*border-radius: 60%;*/
         }
     </style>
     <link rel=alternate href=/index.xml type=application/rss+xml title="Yiwei Yang @UCSC CS">
@@ -115,7 +127,7 @@
 
                 <a
                     class="container">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br></a>
-                <span class="name">Yiwei Yang</span> (Victor)
+                <span class="name">Yiwei Yang</span> (Vickie)
             </h1>
             <div class="contact-info col-right" style="line-height: 110%;">
                 <div class="container"><br></div>
@@ -170,12 +182,13 @@
         <div class="section row">
             <h2 class="col">Biography</h2>
             <div class="section-text col-right row">
-                I'm a first-year Computer Science System Ph.D student <a
+                I'm a first-year Computer Science System Ph.D. student <a
                     href="https://engineering.ucsc.edu/">@BaskinEng</a>. I'm
                 honored to be advised by <a href="https://arquinn.github.io/">Andrew Quinn</a>, and hacking on
-                cutting-edge HW/SW co-design. My main focus is the reliability and the speed of new system like CXL
+                cutting-edge HW/SW co-design. My main focus is the reliability and the speed of new systems like CXL
                 based on observability of kernel and outer devices.
-                Previously, I'm an undergraduate <a href="https://sist.shanghaitech.edu.cn/">@ShanghaiTech</a>, writing
+                Previously, I was an undergraduate <a href="https://sist.shanghaitech.edu.cn/">@ShanghaiTech</a>,
+                writing
                 <a href="https://chocopy-llvm.github.io/chocopy-llvm/">ChocoPy-LLVM</a> and researching FM/AISec
                 for Professors <a href="http://faculty.sist.shanghaitech.edu.cn/faculty/songfu/">Foo</a>, making SCC
                 happen with <a href="https://www.researchgate.net/scientific-contributions/Shu-Yin-69825172">Shu</a> and
@@ -200,11 +213,17 @@
 
         <div class="section row">
             <h2 class="col">Skills</h2>
-
-
-            <div class="section-text col-right">
-                <img style="width: 100%" class="mycode" src="https://www.josehu.com/assets/img/knowledge-graph.png">
+            <div class="section-text col-right" style="position: relative;left:30px;">
+                <iframe src="/block" width="520" height="280" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen> </iframe>
             </div>
+            <div id="hover">
+                <div class="section-text col-right" style="position:absolute; transform: translate(8%, 14%);">
+                    <img style="width: 65%" class="mycode" src="https://www.josehu.com/assets/img/knowledge-graph.png">
+                </div>
+            </div>
+
         </div>
         <div class="section row">
             <h2 class="col">Education</h2>
@@ -293,7 +312,7 @@
                     <ul class="skills" style="width:24%">
                         <li>RiscV</li>
                         <li>Z3</li>
-                        <li>wasm</li>
+                        <li>WebAssembly</li>
                     </ul>
                     <ul class="skills" style="width:24%">
                         <li>Linux Perf</li>
@@ -302,8 +321,8 @@
                     </ul>
                     <ul class="skills" style="width:24%">
                         <li>MPI</li>
-                        <li>LLVM</li>
-                        <li>Soot</li>
+                        <li>LLVM/MLIR</li>
+                        <li>iouring</li>
                     </ul>
                 </div>
             </div>
@@ -344,8 +363,8 @@
                         <div class="btn-links mb-3">
                             <div class="col-right light">Fall 2022</div>
                             <a class="btn btn-outline-primary my-1 mr-1"
-                                href="https://drive.google.com/drive/folders/1pGqCjIU9eaPBevuXM3HcRV1SxJJbRiEf?usp=sharing" target="_blank"
-                                rel="noopener">Labs</a>
+                                href="https://drive.google.com/drive/folders/1pGqCjIU9eaPBevuXM3HcRV1SxJJbRiEf?usp=sharing"
+                                target="_blank" rel="noopener">Labs</a>
                         </div>
                     </div>
                 </div>
@@ -373,8 +392,9 @@
                                 IBM-ART
                                 to improve accuracy of object recognition to prevent impostors from hacking into
                                 systems.
-                                </li>
-                            <li>Researching MOVE language in Libra currency source code to protect against Arithmetic
+                            </li>
+                            <li>Researching <a href="https://github.com/Leaferx/movable">MOVE</a> language in Libra
+                                currency source code to protect against Arithmetic
                                 Overflow, Timestamp Dependency with <a href="https://github.com/leaferx">LeaferX</a>.
                             </li>
                             <li>Understanding the real access mechanism of Memory Mode Optane Memory and XPBuffer by
