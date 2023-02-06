@@ -2767,3 +2767,11 @@ button.close {
 a.close.disabled {
   pointer-events: none
 }
+
+.huge-photo {
+  display: none;
+}
+
+.tiny-photo{
+  display: block;
+}
