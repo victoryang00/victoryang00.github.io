@@ -2620,3 +2620,11 @@ button.close {
 a.close.disabled {
     pointer-events: none
 }
+
+.huge-photo {
+    display: block;
+}
+
+.tiny-photo{
+    display: none;
+}
