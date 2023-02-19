@@ -7,6 +7,12 @@ body {
   -webkit-font-smoothing: subpixel-antialiased;
 }
 
+.skill {}
+
+.skillset {
+  display: none;
+}
+
 .container {
   visibility: hidden;
 }
@@ -2772,6 +2778,6 @@ a.close.disabled {
   display: none;
 }
 
-.tiny-photo{
+.tiny-photo {
   display: block;
 }

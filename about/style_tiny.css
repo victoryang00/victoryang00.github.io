@@ -7,6 +7,13 @@ body {
     -webkit-font-smoothing: subpixel-antialiased;
 }
 
+.skill {
+    display: none;
+}
+
+.skillset {
+}
+
 .fa-moon {
     color: #f1c40f;
 }
@@ -2625,6 +2632,6 @@ a.close.disabled {
     display: block;
 }
 
-.tiny-photo{
+.tiny-photo {
     display: none;
 }
