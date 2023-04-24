@@ -208,7 +208,10 @@
              "-device cxl-rp,port=0,bus=cxl.1,id=root_port13,chassis=0,slot=2",
              "-object memory-backend-file,id=cxl-mem1,share=on,mem-path=/tmp/cxltest.raw,size=256M",
              "-object memory-backend-file,id=cxl-lsa1,share=on,mem-path=/tmp/lsa.raw,size=256M",
-             "-device cxl-type3,bus=root_port13,memdev=cxl-mem1,lsa=cxl-lsa1,id=cxl-mem0"])
+             "-device cxl-type3,bus=root_port13,memdev=cxl-mem1,lsa=cxl-lsa1,id=cxl-mem0",
+             "-device virtio-crypto-cxl,id=crypto0,cryptodev=cryptodev0",
+             "-object cryptodev-backend-builtin,id=cryptodev0",
+             "-object secret,id=sec0,file=./Drywall/passwd.txt"])
             .output()
             .expect("failed to execute process")
     }
