@@ -52,6 +52,17 @@
     <!-- and it's easy to individually load additional languages -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/languages/scala.min.js"></script>
     <script>hljs.highlightAll();</script>
+    <style type="text/css">
+        #hover {
+            width: 70%;
+            background-color: #000000;
+        }
+
+        #hover:hover {
+            background-color: rgba(100, 100, 100, 0);
+            visibility: hidden;
+        }
+    </style>
     <script>
         function myFunction() {
             const chk = document.getElementById('chk');
@@ -68,6 +79,10 @@
             h3Elements.classList.toggle("dark-mode");
             var pageElements = document.getElementsByTagName("div")[0];
             pageElements.classList.toggle("dark-mode");
+            var codeElements = document.getElementsByClassName("mycode")[0];
+            codeElements.classList.toggle("dark-mode");
+            var codeElements = document.getElementsByClassName("mycode")[1];
+            codeElements.classList.toggle("dark-mode");
             for (let i = 0; i < 11; i++) {
                 codeElements = document.getElementsByClassName("grid-item")[i];
                 codeElements.classList.toggle("dark-mode");
@@ -138,12 +153,6 @@
                             class="fab fa-github"></i></a>
                     <a href="https://www.zhihu.com/people/dian-dian-di-di-87-74"><i style="position:relative;top:2px;"
                             class="fab fa-zhihu"></i></a>
-                    <a href="https://www.instagram.com/yiwei454/"><i style="position:relative;top:2px;"
-                            class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/channel/UCaLod4S2-Z-66pzckZUVy0w"><i
-                            style="position:relative;top:2px;" class="fab fa-youtube"></i></a>
-                    <a href="https://www.facebook.com/yiwei.yang.372"><i style="position:relative;top:2px;"
-                            class="fab fa-facebook"></i></a>
                     <a href="/about/wechat.jpg"><i style="position:relative;top:2px;" class="fab fa-wechat"></i></a>
                     <a href="https://cn.pornhub.com/users/victoryang_00"><img src="my-icon.png"
                             style="width:24px;height:12px;position:relative;top:2px;"></a>
@@ -158,7 +167,7 @@
                             class="iconify" data-icon="academicons:dblp"></i></a><a
                         href="https://orcid.org/0000-0001-8011-5868"> <i style="position:relative; top:3px;"
                             class="iconify" data-icon="academicons:orcid"></i></a>
-                <a href="/wordpress"><i class="fa fa-camera"></i></a><a href="/wiki"><i class="fa fa-wikipedia-w"></i></a></div>
+                <a href="/wordpress"><i class="fa fa-camera"></i></a><a href="/wiki"><span style="position:relative;top:2px;" class="iconify" data-icon="icon-park-outline:save"></a><a href="/trips"><i class="fa fa-plane"></i></a></div>
             </div>
         </div>
 
@@ -166,11 +175,38 @@
             <h2 class="col">自我陈述</h2>
             <div class="section-text col-right row">
                 学了一点点C++，Go和Rust，可以解决除了算法外的几乎所有代码问题。完全不会linux，会一点点LLVM/MLIR，WebAssembly，eBPF和Z3。AI是业余有空会开发开发的小东西。如果你觉得我写的代码或者发的paper没有novelty或者垃圾的要死，绝对不是你的问题，欢迎邮件来喷！我的研究目标是利用CXL技术在现代异构架构和通用处理器上加速数据访问和操作，以满足不同公司的工作负载。我相信硬件-软件协同设计的方法。硬件在不牺牲异构处理性能的前提下，通过对工作负载的深入了解，为常见的情况提供专门的加速能力，而软件则通过发送语义提示，自适应地利用硬件的优势，并在硬件加速无法实现时，退回到其他较慢的路径。我对寻求新知识和商业机会有极大的热情，并位于两个大都市--旧金山湾区和上海，我很自豪能学到更多的东西，使他人受益更多，赚得更多。
+                <pre><code class="language-rust mycode">fn research_no_failure()->Result < Paper, Error > {
+    let output = if cfg!(target_os = "linux") {
+        Command::new("qemu-x86_64-system")
+        .args(["-smp 6",
+                "-numa node,cpus=0-7,memdev=mem0,nodeid=0", "-object memory-backend-ram,id=mem0,size=8G",
+                "-numa node,cpus=8-15,memdev=mem1,nodeid=1", "-object memory-backend-ram,id=mem1,size=8G",
+                "-m 16G,slots=4,maxmem=32G", "-machine q35,cxl=on", "-M cxl-fmw.0.targets.0=cxl.1,cxl-fmw.0.size=4G",
+                "-device pxb-cxl,bus_nr=12,bus=pcie.0,id=cxl.1", "-device cxl-rp,port=0,bus=cxl.1,id=root_port13,chassis=0,slot=2",
+                "-object memory-backend-file,id=cxl-mem1,share=on,mem-path=cxltest.raw,size=256M",
+                "-object memory-backend-file,id=cxl-lsa1,share=on,mem-path=lsa.raw,size=256M",
+                "-device cxl-type3,bus=root_port13,memdev=cxl-mem1,lsa=cxl-lsa1,id=cxl-mem0",
+                "-device virtio-crypto-cxl,id=crypto0,cryptodev=cryptodev0",
+                "-object cryptodev-backend-builtin,id=cryptodev0", "-object secret,id=sec0,file=passwd.txt"])
+            .output()
+            .expect("failed to execute process")
+    }
+    let paper = Paper::new(output);
+    loop{
+        asm!("clflush" :: "r" (&paper.iter()) : "rax", "rbx", "rcx", "rdx": "volatile" );
+        __atomic_thread_fence(__ATOMIC_SEQ_CST);
+        if (paper.is_valid()){
+            break;
+        }
+    }
+    Ok(paper)
+}
+                </code></pre>
             </div>
         </div>
         <div class="section row">
             <h2 class="col">技能</h2>
-            <div class="section-text col-right skill mycode" style="position: relative;left:30px;">
+            <div class="section-text col-right skill" style="position: relative;left:30px;">
                 <iframe src="/block" width="530" height="290" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen> </iframe>
@@ -184,115 +220,9 @@
             <div class="section-text col-right skillset">
                 <img style="width: 100%" class="mycode" src="https://www.josehu.com/assets/img/knowledge-graph.png">
             </div>
-
         </div>
         <div class="section row">
-            <h2 class="col">教育</h2>
-            <div class="section-text col-right">
-                <h3><span class="emph">Ph.D.学生</span> 计算机科学与技术
-                </h3>
-                <div><a href="https://ucsc.edu/">加州大学圣克鲁兹分校</a></div>
-
-                <div class="row">
-                    <div class="col light">圣克鲁兹, 加利福尼亚</div>
-                    <div class="col-right light	">2022年7月 - 2028年7月</div>
-                </div>
-            </div>
-            <div class="section-text col-right">
-                <h3><span class="emph">本科</span> 计算机科学与技术</h3>
-                <div><a href="http://www.shanghaitech.edu.cn/">上海科技大学</a></div>
-
-                <div class="row">
-                    <div class="col light">中国上海</div>
-                    <div class="col-right light	">2018年9月 - 2022年6月</div>
-                </div>
-            </div>
-        </div>
-        <div class="section row">
-            <h2 class="col">实习</h2>
-            <div class="section-text col-right">
-                <div class="row">
-                    <div class="col">
-                        <h3><a href="#">服务高性能自动化运维于低延时交易公司</a></h3>
-                        <div><a href="https://www.jumptrading.com/">跃申，上海</a></div>
-                    </div>
-                </div>
-                <div class="row subsection">
-                    <div class="col light">中国上海</div>
-                    <div class="col-right light	">2020年6月 - 2020年9月</div>
-                </div>
-
-                <div>
-                    <ul class="desc">
-                        <li>弄了个Linear Regression进行高频交易盘账模拟。</li>
-                        <li>学习了个salt和jinja在Linux DevOps的应用，又搞了个自动调度作业和分配cpu核心绑定。</li>
-                        <li>丢下个没做完的并行文件系统eBPF的io侦测项目。</li>
-                </div>
-            </div>
-            <div class="section-text col-right">
-                <div class="row">
-                    <div class="col">
-                        <h3><a href="https://hpc.geekpie.club">GeekPie_HPC @ 上科大</a></h3>
-                    </div>
-                </div>
-                <div class="row subsection">
-                    <div class="emph col"> 队长</div>
-                    <div class="col-right light">2019年12月 - 2021年11月</div>
-                </div>
-                <div>服务于培养凑不齐人数的对System有兴趣的本科生组成的HPC相关调参数团队培训。不断准备并争取参加ASC、ISC、SC等顶级学生超算比赛并被THU打败。
-                </div>
-                <ul class="desc">
-                    <li>改了并行量子计算机模拟器的GPU MPI版。</li>
-                    <li>在Azure上编译和分布式气候模拟器<i>CESM</i>，并进行自动调度。</li>
-                    <li>优化了一个英伟达内部用于优化OSU中MPI alltoallv 的项目。</li>
-                    <li>加了一个PLFS，WRF不小心增加了30%性能，虽然还是打不过调参。</li>
-                    <li>和程家俊同学参照MadFS实现了<a href="https://github.com/victoryang00/distributed_kuco_fs">BadFS</a>。</li>
-            </div>
-        </div>
-        <div class="section row">
-            <h2 class="col">助教</h2>
-            <div class="section-text col-right">
-                <div class="row">
-                    <div class="col">
-                        <h3>上科大 CS131: 编译原理</h3>
-                    </div>
-                    <div style="white-space: pre-line;"><a></a></div>
-                    <div style="white-space: pre-line;"><a></a></div>
-                    <div class="btn-links mb-3">
-                        <div class="col-right light">2021/2022 春</div>
-                        <a class="btn btn-outline-primary my-1 mr-1" href="https://github.com/cs131-chocopy/"
-                            target="_blank" rel="noopener">ChocoPy-LLVM</a>
-                        <a class="btn btn-outline-primary my-1 mr-1"
-                            href="https://github.com/victoryang00/CS131-COOL-Compiler" target="_blank"
-                            rel="noopener">COOL</a>
-                        <a class="btn btn-outline-primary my-1 mr-1"
-                            href="https://github.com/victoryang00/CS131-discussion" target="_blank"
-                            rel="noopener">Discussion</a>
-                        <a class="btn btn-outline-primary my-1 mr-1"
-                            href="https://space.bilibili.com/3007867/channel/seriesdetail?sid=2090886&ctype=0"
-                            target="_blank" rel="noopener">Video</a>
-                        <a class="btn btn-outline-primary my-1 mr-1"
-                            href="https://docs.google.com/presentation/d/1LPZZX-nodPAX42hGFEIuUZEe_08StKkm/edit?usp=sharing&ouid=112951909136094460728&rtpof=true&sd=true"
-                            target="_blank" rel="noopener">Talk@RVSC22</a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <h3>加州大学圣克鲁兹分校 CSE12: 计算机系统与编程语言</h3>
-                    </div>
-                    <div style="white-space: pre-line;"><a></a></div>
-                    <div style="white-space: pre-line;"><a></a></div>
-                    <div class="btn-links mb-3">
-                        <div class="col-right light">2022 秋</div>
-                        <a class="btn btn-outline-primary my-1 mr-1"
-                            href="https://drive.google.com/drive/folders/1pGqCjIU9eaPBevuXM3HcRV1SxJJbRiEf?usp=sharing"
-                            target="_blank" rel="noopener">实验</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="section row">
-            <h2 class="col">研究</h2>
+            <h2 class="col">研究近况</h2>
             <div class="section-text col-right">
                 <div class="row">
                     <div class="col">
@@ -310,49 +240,6 @@
                         替换策略。模拟数据中心应用的内存disaggregation。</li>
                     <li>基于CXL.cache的数据movement软硬件协同设计。</li>
                     <li>基于WebAssembly的虚拟机迁移。</li>
-            </div>
-            <div class="section-text col-right">
-                <div class="row subsection">
-                    <div class="row">
-                        <div class="col">
-                            <h3><a href="http://mir.cs.illinois.edu/marinov/students">Darko's team</a> <a
-                                    href="https://cs.illinois.edu/research/undergraduate-research/summer-research-experience-undergraduates/participants/yiwei-yang">@
-                                    UIUC</a></h3>
-                        </div>
-                    </div>
-                    <div class="emph col">大学生暑期科研项目</div>
-                    <div class="col-right light">2021年7月 - 2021年9月</div>
-                    <ul class="desc">
-                </div>
-                <div> Darko是个很nice的人。 </div>
-                <div>
-                    <ul class="desc">
-                        <li>主要就在跑<a
-                                href="https://asplos.dev/wordpress/wp-content/uploads/2022/08/CS224_Project-1.pdf">Flaky
-                                Tests</a>，学了点硬核bash和jvm插桩。</li>
-                </div>
-            </div>
-            <div class="section-text col-right">
-                <div class="row subsection">
-                    <div class="row">
-                        <div class="col">
-                            <h3><a href="http://s3l.shanghaitech.edu.cn/">系统实验室 </a><a
-                                    href="https://toast-lab.sist.shanghaitech.edu.cn/">@ ShanghaiTech</a></h3>
-                        </div>
-                    </div>
-                    <div class="emph col">研究助理实习</div>
-                    <div class="col-right light">2019年7月 - 2021年12月</div>
-                </div>
-                <div>认真做了很多，但受限于课业太容易Panic了，很多都没时间做完了，这学校太PUA了。
-                </div>
-                <ul class="desc">
-                    <div>
-                        <ul class="desc">
-                            <li>跑了跑foolbox和IBM-ART的实验，研究深度神经网络的对抗性样本检测。</li>
-                            <li>看了看Diem的Move Spec，全靠带，暂时没产出。</li>
-                            <li>搞了搞MDS on AEP，总之都在测时延。</li>
-                    </div>
-
             </div>
         </div>
 
@@ -464,6 +351,48 @@
 
             </div>
 
+        </div>
+        <div class="section row">
+            <h2 class="col">助教</h2>
+            <div class="section-text col-right">
+                <div class="row">
+                    <div class="col">
+                        <h3>上科大 CS131: 编译原理</h3>
+                    </div>
+                    <div style="white-space: pre-line;"><a></a></div>
+                    <div style="white-space: pre-line;"><a></a></div>
+                    <div class="btn-links mb-3">
+                        <div class="col-right light">2021/2022 春</div>
+                        <a class="btn btn-outline-primary my-1 mr-1" href="https://github.com/cs131-chocopy/"
+                            target="_blank" rel="noopener">ChocoPy-LLVM</a>
+                        <a class="btn btn-outline-primary my-1 mr-1"
+                            href="https://github.com/victoryang00/CS131-COOL-Compiler" target="_blank"
+                            rel="noopener">COOL</a>
+                        <a class="btn btn-outline-primary my-1 mr-1"
+                            href="https://github.com/victoryang00/CS131-discussion" target="_blank"
+                            rel="noopener">Discussion</a>
+                        <a class="btn btn-outline-primary my-1 mr-1"
+                            href="https://space.bilibili.com/3007867/channel/seriesdetail?sid=2090886&ctype=0"
+                            target="_blank" rel="noopener">Video</a>
+                        <a class="btn btn-outline-primary my-1 mr-1"
+                            href="https://docs.google.com/presentation/d/1LPZZX-nodPAX42hGFEIuUZEe_08StKkm/edit?usp=sharing&ouid=112951909136094460728&rtpof=true&sd=true"
+                            target="_blank" rel="noopener">Talk@RVSC22</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h3>加州大学圣克鲁兹分校 CSE12: 计算机系统与编程语言</h3>
+                    </div>
+                    <div style="white-space: pre-line;"><a></a></div>
+                    <div style="white-space: pre-line;"><a></a></div>
+                    <div class="btn-links mb-3">
+                        <div class="col-right light">2022 秋</div>
+                        <a class="btn btn-outline-primary my-1 mr-1"
+                            href="https://drive.google.com/drive/folders/1pGqCjIU9eaPBevuXM3HcRV1SxJJbRiEf?usp=sharing"
+                            target="_blank" rel="noopener">实验</a>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="section row">
             <h2 class="col">
@@ -940,9 +869,9 @@
             </div>
         </div>
         <footer>
-            <div><small><a href='https://asplos.dev/' target='_blank' class='url'>asplos.dev</a> 也可以访问此网站. ASPLOS 短链接:
+            <div><small>ASPLOS 短链接:
                     <code>https://asplos.dev/&lt;year&gt;</code>, 比如
-                    <a href='https://asplos.dev/2022' target='_blank' class='url'>asplos.dev/2022</a>.</small>
+                    <a href='https://asplos.dev/2024' target='_blank' class='url'>asplos.dev/2024</a>.</small>
                 <p><small>沪ICP备18048797号-1</small></p>
         </footer>
     </div>
