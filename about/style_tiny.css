@@ -60,7 +60,7 @@ body {
 }
 
 .dark-mode {
-    background-color: black;
+    background-color: rgb(167, 211, 235);
     color: white;
 }
 
@@ -168,20 +168,20 @@ h1 {
     font-weight: 300;
     margin: 0px 0 0;
     font-size: 1.75em;
-    color: #1300ba;
+    color: rgb(217, 151, 173);
     padding: 0 0px 0px;
     border-radius: 2px;
     font-family: 'Merriweather', serif;
 }
 
 h1.dark-mode {
-    background-color: black;
-    color: #1300ba;
+    background-color: rgb(167, 211, 235);
+    color: rgb(217, 151, 173);
 }
 
 h2 {
     float: right;
-    color: #1300ba;
+    color: rgb(217, 151, 173);
     width: 100%;
     font-size: 18px;
     padding-left: 0px;
@@ -191,8 +191,8 @@ h2 {
 }
 
 h2.dark-mode {
-    background-color: black;
-    color: #1300ba;
+    background-color: rgb(167, 211, 235);
+    color: rgb(217, 151, 173);
 }
 
 h3 {
@@ -205,7 +205,7 @@ h3 {
 }
 
 h3.dark-mode {
-    background-color: black;
+    background-color: rgb(167, 211, 235);
 }
 
 h2, h3 {
@@ -213,7 +213,7 @@ h2, h3 {
 }
 
 a {
-    color: #1300ba;
+    color: rgb(217, 151, 173);
     display: inline-block;
     text-decoration: none;
     padding: 2px 4px;
@@ -344,7 +344,7 @@ ul.skills li:last-child {
 }
 
 .page.dark-mode {
-    background: black;
+    background: rgb(167, 211, 235);
 }
 
 .subpage {
