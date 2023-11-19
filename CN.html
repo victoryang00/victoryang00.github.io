@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>杨易为 VickieGPT - 简历</title>
     <!--- <meta name="viewport" content="width=device-width, initial-scale=1"> --->
+    <meta name="theme-color" content="rgb(167, 211, 235)">
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
     <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
@@ -125,7 +126,7 @@
             <h1 class="col">
                 <a href="/about/yiwei.png"> <img class="demo" src="/about/yiwei.png"></a>
                 <a
-                    class="container">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br></a>
+                    class="container">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br></a>
                 <span class="name">杨易为</span> (VickieGPT)
             </h1>
             <div class="contact-info col-right" style="line-height: 110%;">
@@ -177,20 +178,14 @@
         <div class="section row">
             <h2 class="col">自我陈述</h2>
             <div class="section-text col-right row">
-                学了一点点C++，Go和Rust，可以解决除了算法外的几乎所有代码问题。完全不会linux，会一点点LLVM/MLIR，WebAssembly，eBPF和Z3。AI是业余有空会开发开发的小东西。如果你觉得我写的代码或者发的paper没有novelty或者垃圾的要死，绝对不是你的问题，欢迎邮件来喷！我的研究目标是利用CXL技术在现代异构架构和通用处理器上加速数据访问和操作，以满足不同公司的工作负载。我相信硬件-软件协同设计的方法。硬件在不牺牲异构处理性能的前提下，通过对工作负载的深入了解，为常见的情况提供专门的加速能力，而软件则通过发送语义提示，自适应地利用硬件的优势，并在硬件加速无法实现时，退回到其他较慢的路径。我对寻求新知识和商业机会有极大的热情，并位于两个大都市--旧金山湾区和上海，我很自豪能学到更多的东西，使他人受益更多，赚得更多。
+                学了一点点C++，Go和Rust，可以解决除了算法外的几乎所有代码问题。完全不会linux，会一点点LLVM/MLIR，WebAssembly，eBPF和Z3。AI是业余有空会开发开发的小东西。如果你觉得我写的代码或者发的paper没有novelty或者垃圾的要死，绝对不是你的问题，欢迎邮件来喷！我的研究目标是利用CXL技术在现代异构架构和通用处理器上加速数据访问和操作，以满足不同公司的工作负载。我相信硬件-软件协同设计的方法。硬件在不牺牲异构处理性能的前提下，通过对工作负载的深入了解，为常见的情况提供专门的加速能力，而软件则通过发送语义提示，自适应地利用硬件的优势，并在硬件加速无法实现时，退回到其他较慢的路径。我对寻求新知识和商业机会有极大的热情，并位于两个大都市——旧金山湾区和上海，我很自豪能学到更多的东西，使他人受益更多，赚得更多。
                 <pre><code class="language-rust mycode">fn research_no_failure()->Result < Paper, Error > {
     let output = if cfg!(target_os = "linux") {
         Command::new("qemu-x86_64-system")
-        .args(["-smp 6",
-                "-numa node,cpus=0-7,memdev=mem0,nodeid=0", "-object memory-backend-ram,id=mem0,size=8G",
-                "-numa node,cpus=8-15,memdev=mem1,nodeid=1", "-object memory-backend-ram,id=mem1,size=8G",
-                "-m 16G,slots=4,maxmem=32G", "-machine q35,cxl=on", "-M cxl-fmw.0.targets.0=cxl.1,cxl-fmw.0.size=4G",
-                "-device pxb-cxl,bus_nr=12,bus=pcie.0,id=cxl.1", "-device cxl-rp,port=0,bus=cxl.1,id=root_port13,chassis=0,slot=2",
-                "-object memory-backend-file,id=cxl-mem1,share=on,mem-path=cxltest.raw,size=256M",
-                "-object memory-backend-file,id=cxl-lsa1,share=on,mem-path=lsa.raw,size=256M",
-                "-device cxl-type3,bus=root_port13,memdev=cxl-mem1,lsa=cxl-lsa1,id=cxl-mem0",
-                "-device virtio-crypto-cxl,id=crypto0,cryptodev=cryptodev0",
-                "-object cryptodev-backend-builtin,id=cryptodev0", "-object secret,id=sec0,file=passwd.txt"])
+        .args(["-smp 6", "-numa node,cpus=0-7,memdev=mem0,nodeid=0", "-object memory-backend-ram,id=mem0,size=8G","-numa node,cpus=8-15,memdev=mem1,nodeid=1", "-object memory-backend-ram,id=mem1,size=8G","-m 16G,slots=4,maxmem=32G", "-machine q35,cxl=on", "-M cxl-fmw.0.targets.0=cxl.1,cxl-fmw.0.size=4G",
+             "-device pxb-cxl,bus_nr=12,bus=pcie.0,id=cxl3.1", "-device cxl-rp,port=0,bus=cxl.1,id=root_port13,chassis=0,slot=2",
+             "-device cxl-type3,bus=root_port13,memdev=cxl-mem1,lsa=cxl-lsa1,id=cxl-mem0",
+             "-device cxl-type1,bus=root_port14,virtio-crypto-cxl,id=crypto0,cryptodev=cryptodev0"])
             .output()
             .expect("failed to execute process")
     }
@@ -239,10 +234,17 @@
                 </div>
                 <div> UCSC是个很industrialized的地方。 </div>
                 <ul class="desc">
-                    <li>了解CXL.mem系统的性能特点。数据驱动的远端内存分配、预取和
-                        替换策略。模拟数据中心应用的内存disaggregation。</li>
-                    <li>基于CXL.cache的数据movement软硬件协同设计。</li>
-                    <li>基于WebAssembly的虚拟机迁移。</li>
+                    <li> 了解CXL.mem系统的性能特点、数据驱动的远端内存分配、预取和
+                        替换策略、模拟数据中心应用的内存远端分配<a href="/cxl"><img src="about/cxl.png"
+                                style="width:24px;height:24px;position:relative;top:2px;"></a></li>
+                    <li>基于CXL.cache的数据movement软硬件协同设计<a href="/cxl"><img src="/about/cxlmemuring.jpg"
+                                style="width:24px;height:24px;position:relative;top:2px;"></a></li>
+                    <li>基于WebAssembly的虚拟机迁移<a href="/wordpress/2023/02/07/webassembly-micro-runtime-internals-2"><img
+                                src="/about/webassembly.png"
+                                style="width:24px;height:24px;position:relative;top:2px;"></a></li>
+                    <li>基于用户态内核态eBPF协同工作的分布式系统<a href="https://github.com/eunomia-bpf/bpftime/"><img
+                                src="/about/ebpf.png" style="width:24px;height:24px;position:relative;top:2px;"></a>
+                    </li>
             </div>
         </div>
 
@@ -254,7 +256,7 @@
                         <h3>bpftime: userspace eBPF Runtime for Uprobe, Syscall and Kernel-User Interactions</h3>
                     </div>
                     <div class="btn-links mb-3">
-                        <div class="col-right light">November 2023</div>
+                        <div class="col-right light">2023年11月</div>
                         <a class="btn btn-outline-primary my-1 mr-1"
                             href="https://lpc.events/event/17/contributions/1639/" target="_blank" rel="noopener">LPC
                             Conference 23</a>
@@ -263,6 +265,11 @@
                         <a class="btn btn-outline-primary my-1 mr-1 js-cite-modal" href="javascript:void(0)"
                             data-filename="/about/cite_lpc23.bib">
                             Cite</a>
+                        <a class="btn btn-outline-primary my-1 mr-1"
+                            href="https://lpc.events/event/17/contributions/1639/attachments/1280/2585/userspace-ebpf-bpftime-lpc.pdf">
+                            Slides</a>
+                        <a class="btn btn-outline-primary my-1 mr-1" href="https://github.com/eunomia-bpf/bpftime/">
+                            Code</a>
                         <div class="col light">Yusheng Zheng, Tong Yu, <b>Yiwei Yang</b>, Yanpeng Hu, XiaoZheng Lai,
                             Andrew Quinn
                         </div>
@@ -275,7 +282,7 @@
                             Memory Pool Access</h3>
                     </div>
                     <div class="btn-links mb-3">
-                        <div class="col-right light">September 2023</div>
+                        <div class="col-right light">2023年9月</div>
                         <a class="btn btn-outline-primary my-1 mr-1"
                             href="https://webportalapp.com/sp/login/nvidia_grad_fellow_2024" target="_blank"
                             rel="noopener">NV Fellowship Application Material</a>
@@ -427,463 +434,24 @@
                         <h3>加州大学圣克鲁兹分校 CSE12: 计算机系统与编程语言</h3>
                     </div>
                     <div style="white-space: pre-line;"><a></a></div>
-                    <div style="white-space: pre-line;"><a></a></div>
                     <div class="btn-links mb-3">
+                        <a class="container">&nbsp;&nbsp;<br></a>
                         <div class="col-right light">2022 秋</div>
                         <a class="btn btn-outline-primary my-1 mr-1"
-                            href="https://drive.google.com/drive/folders/1pGqCjIU9eaPBevuXM3HcRV1SxJJbRiEf?usp=sharing"
-                            target="_blank" rel="noopener">实验</a>
+                            href="https://docs.google.com/presentation/d/1Bovx3vuJ70Lof-ZHi-XeJHOaoJa_qVEUqol0Vy4AKPg/edit#slide=id.p"" target="
+                            _blank" rel="noopener">Discussion 10/3</a>
+                        <a class="btn btn-outline-primary my-1 mr-1"
+                            href="https://docs.google.com/presentation/d/1-8uRbDaVNe3CoURpoa1CzuN-2q-COz-MPzGWmRuDjAk/edit#slide=id.p"" target="
+                            _blank" rel="noopener">Discussion 10/19</a>
+                        <a class="btn btn-outline-primary my-1 mr-1"
+                            href="https://docs.google.com/presentation/d/1y3OnMGykmLnAAyJXibaFQFMVGlxKEgYh_kMLGWsUv7E/edit#slide=id.p"" target="
+                            _blank" rel="noopener">Discussion 10/26</a>
+                        <a class="btn btn-outline-primary my-1 mr-1"
+                            href="https://docs.google.com/presentation/d/1ok8kE9TrDVrOC-D4mnp46Z4FqKxhG5ngo2cKt2SPR7c/edit#slide=id.p"" target="
+                            _blank" rel="noopener">Discussion 11/3</a>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="section row">
-            <h2 class="col">
-                <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">重点项目</font>
-                </font>
-            </h2>
-
-            <div class="section-text col-right">
-
-                <!-- <div class="row subsection">
-                    <div class="emph col">
-                        <h3><a href="https://github.com/0x238e/Vchain"><span style="font-weight:700">
-                                    <font style="vertical-align: inherit;">
-                                        <font style="vertical-align: inherit;">基于区块链和远程信息处理的驾驶员辅助决策和保险评估系统</font>
-                                    </font>
-                                </span><br><span style="font-weight:100; font-size: 14px">
-                                    <font style="vertical-align: inherit;">
-                                        <font style="vertical-align: inherit;">(https://github.com/0x238e/Vchain)</font>
-                                    </font>
-                                </span></a>
-                        </h3>
-                    </div>
-                    <div class="col-right light">
-                        <font style="vertical-align: inherit;">
-                            <font style="vertical-align: inherit;">2019 年 4 月</font>
-                        </font>
-                    </div>
-                </div>
-                <div>
-                    <ul class="desc">
-                        <font style="vertical-align: inherit;">
-                            <font style="vertical-align: inherit;">
-                                VChain的价值来自于驾驶辅助决策的应用和商业模式的创新，前者依赖于区块链安全和无延迟计算，后者来自于数据聚合和移动。
-                            </font>
-                        </font>
-                        <li>
-                            <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">在一个范围内，CPChain 创建的区块链信任多个汽车传感器及其数据交易。</font>
-                            </font>
-                        </li>
-                        <li>
-                            <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">基于物联网大数据的人工智能决策。</font>
-                                <font style="vertical-align: inherit;">异构数据互操作，导致大数据聚合。</font>
-                            </font>
-                        </li>
-                        <li>
-                            <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">数据资产的交互与应用，数据资产正在利用主链的可验证特性来造福保险估值等新兴商业模式。</font>
-                            </font>
-                        </li>
-                    </ul>
-                </div> -->
-
-                <div class="grid">
-
-                    <div class="grid-item" style="height:220px;width:210px;">
-                        <div aria-hidden="true" id="id__ozt6lhlchm" data-testid="card.layoutLarge.media"><a
-                                href="https://asplos.dev/wordpress/2020/09/17/operating-system-project-2020-summer/"
-                                rel="noopener noreferrer" target="_blank" role="link"
-                                class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-1ny4l3l r-1udh08x r-o7ynqc r-6416eg r-13qz1uu">
-                                <div class="css-1dbjc4n r-1adg3ll r-1udh08x">
-                                    <div class="r-1adg3ll r-13qz1uu" style="position:relative;"></div>
-                                    <div class="r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-ipm5af r-13qz1uu">
-                                        <div aria-label=""
-                                            class="css-1dbjc4n r-1p0dtai r-1mlwlqe r-1d2f490 r-11wrixw r-61z16t r-1udh08x r-u8s1d r-zchlnj r-ipm5af r-417010"
-                                            style="margin-bottom: 0px; margin-top: 0px;">
-                                            <div class="css-1dbjc4n r-1niwhzg r-vvn4in r-u6sd8q r-4gszlv r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-zchlnj r-ipm5af r-13qz1uu r-1wyyakw"
-                                                style="background-image: url(&quot;https://asplos.dev/wordpress/wp-content/uploads/2022/02/image-73.png&quot;);">
-                                            </div><img class="grid-img" alt="" draggable="true" style="width:200px"
-                                                src="https://asplos.dev/wordpress/wp-content/uploads/2022/02/image-73.png"
-                                                class="css-9pa8cd">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></div>
-
-                        <div style="text-align: left;"><a
-                                href="https://asplos.dev/wordpress/2020/09/17/operating-system-project-2020-summer/"
-                                rel="noopener noreferrer" target="_blank" role="link"
-                                class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-18u37iz r-16y2uox r-1wtj0ep r-1ny4l3l r-o7ynqc r-6416eg">
-                                <div class="css-1dbjc4n r-16y2uox r-1wbh5a2 r-z5qs1h r-1777fci r-kzbkwu r-1e081e0 r-ttdzmv"
-                                    data-testid="card.layoutLarge.detail">
-                                    <div dir="auto"
-                                        class="css-901oao css-bfa6kz r-9ilb82 r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-qvutc0">
-                                    </div>
-                                    <div dir="auto"
-                                        class="css-901oao css-cens5h r-1fmj7o5 r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-qvutc0"
-                                        style="-webkit-line-clamp: 2;"><span
-                                            class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0"><span
-                                                class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">PLFS</span></span>
-                                    </div>
-                                </div>
-                            </a></div>
-                    </div>
-
-                    <div class="grid-item" style="height:220px;width:170px;">
-                        <div aria-hidden="true" id="id__ozt6lhlchm" data-testid="card.layoutLarge.media"><a
-                                href="https://github.com/0x238e/Vchain" rel="noopener noreferrer" target="_blank"
-                                role="link"
-                                class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-1ny4l3l r-1udh08x r-o7ynqc r-6416eg r-13qz1uu">
-                                <div class="css-1dbjc4n r-1adg3ll r-1udh08x">
-                                    <div class="r-1adg3ll r-13qz1uu" style="position:relative;"></div>
-                                    <div class="r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-ipm5af r-13qz1uu">
-                                        <div aria-label=""
-                                            class="css-1dbjc4n r-1p0dtai r-1mlwlqe r-1d2f490 r-11wrixw r-61z16t r-1udh08x r-u8s1d r-zchlnj r-ipm5af r-417010"
-                                            style="margin-bottom: 0px; margin-top: 0px;">
-                                            <div class="css-1dbjc4n r-1niwhzg r-vvn4in r-u6sd8q r-4gszlv r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-zchlnj r-ipm5af r-13qz1uu r-1wyyakw"
-                                                style="background-image: url(&quot;https://raw.githubusercontent.com/0x238e/Vchain/master/img/6.png&quot;);">
-                                            </div><img class="grid-img" alt="" draggable="true" style="width:150px"
-                                                src="https://raw.githubusercontent.com/0x238e/Vchain/master/img/6.png"
-                                                class="css-9pa8cd">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></div>
-
-                        <div style="text-align: left;"><a href="https://github.com/0x238e/Vchain"
-                                rel="noopener noreferrer" target="_blank" role="link"
-                                class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-18u37iz r-16y2uox r-1wtj0ep r-1ny4l3l r-o7ynqc r-6416eg">
-                                <div class="css-1dbjc4n r-16y2uox r-1wbh5a2 r-z5qs1h r-1777fci r-kzbkwu r-1e081e0 r-ttdzmv"
-                                    data-testid="card.layoutLarge.detail">
-                                    <div dir="auto"
-                                        class="css-901oao css-bfa6kz r-9ilb82 r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-qvutc0">
-                                    </div>
-                                    <div dir="auto"
-                                        class="css-901oao css-cens5h r-1fmj7o5 r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-qvutc0"
-                                        style="-webkit-line-clamp: 2;"><span
-                                            class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0"><span
-                                                class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">VChain</span></span>
-                                    </div>
-                                </div>
-                            </a></div>
-                    </div>
-
-                    <div class="grid-item" style="height:114px;width:100px;">
-                        <div><a href="https://github.com/ZoneLikeWonderland/ShanghaiTech-CS110-project"
-                                rel="noopener noreferrer" target="_blank" role="link"
-                                class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-1ny4l3l r-1udh08x r-o7ynqc r-6416eg r-13qz1uu">
-                                <div class="css-1dbjc4n r-1adg3ll r-1udh08x">
-                                    <div class="r-1adg3ll r-13qz1uu" style="position:relative;"></div>
-                                    <div class="r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-ipm5af r-13qz1uu">
-                                        <div aria-label=""
-                                            class="css-1dbjc4n r-1p0dtai r-1mlwlqe r-1d2f490 r-11wrixw r-61z16t r-1udh08x r-u8s1d r-zchlnj r-ipm5af r-417010"
-                                            style="margin-bottom: 0px; margin-top: 0px;">
-                                            <div class="css-1dbjc4n r-1niwhzg r-vvn4in r-u6sd8q r-4gszlv r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-zchlnj r-ipm5af r-13qz1uu r-1wyyakw"
-                                                style="background-image: url(&quot;https://github.com/ZoneLikeWonderland/ShanghaiTech-CS110-project/raw/master/cover.jpg&quot;);">
-                                            </div><img class="grid-img" alt="" draggable="true" style="width:90px"
-                                                src="https://github.com/ZoneLikeWonderland/ShanghaiTech-CS110-project/raw/master/cover.jpg"
-                                                class="css-9pa8cd">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></div>
-                        <div style="text-align: left;"><a
-                                href="https://github.com/ZoneLikeWonderland/ShanghaiTech-CS110-project">
-                                <div class="css-1dbjc4n r-16y2uox r-1wbh5a2 r-z5qs1h r-1777fci r-kzbkwu r-1e081e0 r-ttdzmv"
-                                    data-testid="card.layoutLarge.detail">
-                                    <div dir="auto"
-                                        class="css-901oao css-cens5h r-1fmj7o5 r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-qvutc0"
-                                        style="-webkit-line-clamp: 2;"><span
-                                            class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0"><small
-                                                class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">RV
-                                                元气骑士</small></span>
-                                    </div>
-
-                                </div>
-                            </a></div>
-                    </div>
-
-                    <div class="grid-item" style="height:114px;width:172px;">
-                        <div><a href="https://asplos.dev/wordpress/2021/01/17/computer-network-fall-2020/"
-                                rel="noopener noreferrer" target="_blank" role="link"
-                                class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-1ny4l3l r-1udh08x r-o7ynqc r-6416eg r-13qz1uu">
-                                <div class="css-1dbjc4n r-1adg3ll r-1udh08x">
-                                    <div class="r-1adg3ll r-13qz1uu" style="position:relative;"></div>
-                                    <div class="r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-ipm5af r-13qz1uu">
-                                        <div aria-label=""
-                                            class="css-1dbjc4n r-1p0dtai r-1mlwlqe r-1d2f490 r-11wrixw r-61z16t r-1udh08x r-u8s1d r-zchlnj r-ipm5af r-417010"
-                                            style="margin-bottom: 0px; margin-top: 0px;">
-                                            <div class="css-1dbjc4n r-1niwhzg r-vvn4in r-u6sd8q r-4gszlv r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-zchlnj r-ipm5af r-13qz1uu r-1wyyakw"
-                                                style="background-image: url(&quot;https://asplos.dev/about/network.png&quot;);">
-                                            </div><img class="grid-img" alt="" draggable="true" style="width:160px"
-                                                src="about/network.png" class="css-9pa8cd">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></div>
-                        <div style="text-align: left;"><a
-                                href="https://asplos.dev/wordpress/2021/01/17/computer-network-fall-2020/">
-                                <div class="css-1dbjc4n r-16y2uox r-1wbh5a2 r-z5qs1h r-1777fci r-kzbkwu r-1e081e0 r-ttdzmv"
-                                    data-testid="card.layoutLarge.detail">
-                                    <div dir="auto"
-                                        class="css-901oao css-cens5h r-1fmj7o5 r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-qvutc0"
-                                        style="-webkit-line-clamp: 2;"><span
-                                            class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0"><small
-                                                class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">Athernet</small></span>
-                                    </div>
-
-                                </div>
-                            </a></div>
-                    </div>
-                    <div class="grid-item" style="height:106px;width:100px;">
-                        <div aria-hidden="true"
-                            class="css-1dbjc4n r-1igl3o0 r-pm2fo r-zmljjp r-rull8r r-qklmqi r-1adg3ll"
-                            id="id__5zty9w4nfu" data-testid="card.layoutLarge.media"><a
-                                href="https://github.com/victoryang00/Ryan-teaching-winter-session"
-                                rel="noopener noreferrer" target="_blank" role="link"
-                                class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-1ny4l3l r-1udh08x r-o7ynqc r-6416eg r-13qz1uu">
-                                <div class="css-1dbjc4n r-1adg3ll r-1udh08x">
-                                    <div class="r-1adg3ll r-13qz1uu"></div>
-                                    <div class="r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-ipm5af r-13qz1uu">
-                                        <div aria-label=""
-                                            class="css-1dbjc4n r-1p0dtai r-1mlwlqe r-1d2f490 r-11wrixw r-61z16t r-1udh08x r-u8s1d r-zchlnj r-ipm5af r-417010"
-                                            style="margin-bottom: 0px; margin-top: 0px;">
-                                            <div class="css-1dbjc4n r-1niwhzg r-vvn4in r-u6sd8q r-4gszlv r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-zchlnj r-ipm5af r-13qz1uu r-1wyyakw"
-                                                style="background-image: url(&quot;https://github.com/victoryang00/Ryan-teaching-winter-session/blob/6702c80c67c3238bf8fc9c3abbb02e7d8f8bc28c/image/ClickBefore.png?raw=true&quot;);">
-                                            </div><img class="grid-img" alt="" draggable="true" style="width:90px"
-                                                src="https://github.com/victoryang00/Ryan-teaching-winter-session/blob/6702c80c67c3238bf8fc9c3abbb02e7d8f8bc28c/image/ClickBefore.png?raw=true"
-                                                class="css-9pa8cd">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></div>
-
-                        <div class="css-1dbjc4n" id="id__hkxwe54spsu"><a
-                                href="https://github.com/victoryang00/Ryan-teaching-winter-session"
-                                rel="noopener noreferrer" target="_blank" role="link"
-                                class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-18u37iz r-16y2uox r-1wtj0ep r-1ny4l3l r-o7ynqc r-6416eg">
-                                <div class="css-1dbjc4n r-16y2uox r-1wbh5a2 r-z5qs1h r-1777fci r-kzbkwu r-1e081e0 r-ttdzmv"
-                                    data-testid="card.layoutLarge.detail">
-                                    <div style="text-align: left;"><span
-                                            class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0"><span
-                                                class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">EatSanpai</span></span>
-                                    </div>
-                                </div>
-                            </a></div>
-                    </div>
-                    <div class="grid-item" style="height:107px;width:100px;">
-                        <div aria-hidden="true"
-                            class="css-1dbjc4n r-1igl3o0 r-pm2fo r-zmljjp r-rull8r r-qklmqi r-1adg3ll"
-                            id="id__5zty9w4nfu" data-testid="card.layoutLarge.media"><a
-                                href="https://github.com/cs131-chocopy/" rel="noopener noreferrer" target="_blank"
-                                role="link"
-                                class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-1ny4l3l r-1udh08x r-o7ynqc r-6416eg r-13qz1uu">
-                                <div class="css-1dbjc4n r-1adg3ll r-1udh08x">
-                                    <div class="r-1adg3ll r-13qz1uu"></div>
-                                    <div class="r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-ipm5af r-13qz1uu">
-                                        <div aria-label=""
-                                            class="css-1dbjc4n r-1p0dtai r-1mlwlqe r-1d2f490 r-11wrixw r-61z16t r-1udh08x r-u8s1d r-zchlnj r-ipm5af r-417010"
-                                            style="margin-bottom: 0px; margin-top: 0px;">
-                                            <div class="css-1dbjc4n r-1niwhzg r-vvn4in r-u6sd8q r-4gszlv r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-zchlnj r-ipm5af r-13qz1uu r-1wyyakw"
-                                                style="background-image: url(&quot;https://asplos.dev/about/compiler.png&quot;);">
-                                            </div><img class="grid-img" alt="" draggable="true" style="width:80px"
-                                                src="/about/compiler.png" class="css-9pa8cd">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></div>
-
-                        <div class="css-1dbjc4n" id="id__hkxwe54spsu"><a href="https://github.com/cs131-chocopy/"
-                                rel="noopener noreferrer" target="_blank" role="link"
-                                class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-18u37iz r-16y2uox r-1wtj0ep r-1ny4l3l r-o7ynqc r-6416eg">
-                                <div class="css-1dbjc4n r-16y2uox r-1wbh5a2 r-z5qs1h r-1777fci r-kzbkwu r-1e081e0 r-ttdzmv"
-                                    data-testid="card.layoutLarge.detail">
-                                    <div style="text-align: left;"><span
-                                            class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0"><span
-                                                class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">ChocoPy</span></span>
-                                    </div>
-                                </div>
-                            </a></div>
-                    </div>
-                    <div class="grid-item" style="height:90px;width:110px;">
-                        <div><a href="https://asplos.dev/wordpress/2022/11/26/cse220-project-signature-path-prefetcher/"
-                                rel="noopener noreferrer" target="_blank" role="link"
-                                class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-1ny4l3l r-1udh08x r-o7ynqc r-6416eg r-13qz1uu">
-                                <div class="css-1dbjc4n r-1adg3ll r-1udh08x">
-                                    <div class="r-1adg3ll r-13qz1uu" style="position:relative;"></div>
-                                    <div class="r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-ipm5af r-13qz1uu">
-                                        <div aria-label=""
-                                            class="css-1dbjc4n r-1p0dtai r-1mlwlqe r-1d2f490 r-11wrixw r-61z16t r-1udh08x r-u8s1d r-zchlnj r-ipm5af r-417010"
-                                            style="margin-bottom: 0px; margin-top: 0px;">
-                                            <div class="css-1dbjc4n r-1niwhzg r-vvn4in r-u6sd8q r-4gszlv r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-zchlnj r-ipm5af r-13qz1uu r-1wyyakw"
-                                                style="background-image: url(&quot;https://asplos.dev/wordpress/wp-content/uploads/2022/11/16696693699686.jpg&quot;);">
-                                            </div><img class="grid-img" alt="" draggable="true" style="width:100px"
-                                                src="https://asplos.dev/wordpress/wp-content/uploads/2022/11/16696693699686.jpg"
-                                                class="css-9pa8cd">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></div>
-                        <div style="text-align: left;"><a
-                                href="https://asplos.dev/wordpress/2022/11/26/cse220-project-signature-path-prefetcher/">
-                                <div class="css-1dbjc4n r-16y2uox r-1wbh5a2 r-z5qs1h r-1777fci r-kzbkwu r-1e081e0 r-ttdzmv"
-                                    data-testid="card.layoutLarge.detail">
-                                    <div dir="auto"
-                                        class="css-901oao css-cens5h r-1fmj7o5 r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-qvutc0"
-                                        style="-webkit-line-clamp: 2;"><span
-                                            class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0"><small
-                                                class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">SPP
-                                                Prefetcher</small></span>
-                                    </div>
-
-                                </div>
-                            </a></div>
-                    </div>
-
-
-                    <div class="grid-item" style="height:340px;width:212px;">
-                        <div><a href="https://asplos.dev/wordpress/2020/02/25/stage-3/" rel="noopener noreferrer"
-                                target="_blank" role="link"
-                                class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-1ny4l3l r-1udh08x r-o7ynqc r-6416eg r-13qz1uu">
-                                <div class="css-1dbjc4n r-1adg3ll r-1udh08x">
-                                    <div class="r-1adg3ll r-13qz1uu" style="position:relative;"></div>
-                                    <div class="r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-ipm5af r-13qz1uu">
-                                        <div aria-label=""
-                                            class="css-1dbjc4n r-1p0dtai r-1mlwlqe r-1d2f490 r-11wrixw r-61z16t r-1udh08x r-u8s1d r-zchlnj r-ipm5af r-417010"
-                                            style="margin-bottom: 0px; margin-top: 0px;">
-                                            <div class="css-1dbjc4n r-1niwhzg r-vvn4in r-u6sd8q r-4gszlv r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-zchlnj r-ipm5af r-13qz1uu r-1wyyakw"
-                                                style="background-image: url(&quot;https://asplos.dev/about/g20g.jpg&quot;);">
-                                            </div><img class="grid-img" alt="" draggable="true" style="height:290px"
-                                                src="about/g20g.jpg" class="css-9pa8cd">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></div>
-                        <div style="text-align: left;"><a href="https://asplos.dev/wordpress/2020/02/25/stage-3/">
-                                <div class="css-1dbjc4n r-16y2uox r-1wbh5a2 r-z5qs1h r-1777fci r-kzbkwu r-1e081e0 r-ttdzmv"
-                                    data-testid="card.layoutLarge.detail">
-                                    <div dir="auto"
-                                        class="css-901oao css-cens5h r-1fmj7o5 r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-qvutc0"
-                                        style="-webkit-line-clamp: 2;"><span
-                                            class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0"><small
-                                                class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">G20Games</small></span>
-                                    </div>
-
-                                </div>
-                            </a></div>
-                    </div>
-                    <div class="grid-item" style="height:340px;width:310px;">
-                        <div><a href="https://asplos.dev/wordpress/2022/03/03/computer-architecture-sniper-lab2/"
-                                rel="noopener noreferrer" target="_blank" role="link"
-                                class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-1ny4l3l r-1udh08x r-o7ynqc r-6416eg r-13qz1uu">
-                                <div class="css-1dbjc4n r-1adg3ll r-1udh08x">
-                                    <div class="r-1adg3ll r-13qz1uu" style="position:relative;"></div>
-                                    <div class="r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-ipm5af r-13qz1uu">
-                                        <div aria-label=""
-                                            class="css-1dbjc4n r-1p0dtai r-1mlwlqe r-1d2f490 r-11wrixw r-61z16t r-1udh08x r-u8s1d r-zchlnj r-ipm5af r-417010"
-                                            style="margin-bottom: 0px; margin-top: 0px;">
-                                            <div class="css-1dbjc4n r-1niwhzg r-vvn4in r-u6sd8q r-4gszlv r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-zchlnj r-ipm5af r-13qz1uu r-1wyyakw"
-                                                style="background-image: url(&quot;https://asplos.dev/wordpress/wp-content/uploads/2022/03/16463025058773.jpg&quot;);">
-                                            </div><img class="grid-img" alt="" draggable="true" style="width:300px"
-                                                src="https://asplos.dev/wordpress/wp-content/uploads/2022/03/16463025058773.jpg"
-                                                class="css-9pa8cd">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></div>
-                        <div style="text-align: left;"><a
-                                href="https://asplos.dev/wordpress/2022/03/03/computer-architecture-sniper-lab2/">
-                                <div class="css-1dbjc4n r-16y2uox r-1wbh5a2 r-z5qs1h r-1777fci r-kzbkwu r-1e081e0 r-ttdzmv"
-                                    data-testid="card.layoutLarge.detail">
-                                    <div dir="auto"
-                                        class="css-901oao css-cens5h r-1fmj7o5 r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-qvutc0"
-                                        style="-webkit-line-clamp: 2;"><span
-                                            class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0"><small
-                                                class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">Sniper</small></span>
-                                    </div>
-
-                                </div>
-                            </a></div>
-                    </div>
-
-
-                    <div class="grid-item" style="height:220px;width:312px;">
-                        <div><a href="https://asplos.dev/wordpress/2022/02/17/programming-languages-and-compilers-bonus-project-fall-2019/"
-                                rel="noopener noreferrer" target="_blank" role="link"
-                                class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-1ny4l3l r-1udh08x r-o7ynqc r-6416eg r-13qz1uu">
-                                <div class="css-1dbjc4n r-1adg3ll r-1udh08x">
-                                    <div class="r-1adg3ll r-13qz1uu" style="position:relative;"></div>
-                                    <div class="r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-ipm5af r-13qz1uu">
-                                        <div aria-label=""
-                                            class="css-1dbjc4n r-1p0dtai r-1mlwlqe r-1d2f490 r-11wrixw r-61z16t r-1udh08x r-u8s1d r-zchlnj r-ipm5af r-417010"
-                                            style="margin-bottom: 0px; margin-top: 0px;">
-                                            <div
-                                                class="css-1dbjc4n r-1niwhzg r-vvn4in r-u6sd8q r-4gszlv r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-zchlnj r-ipm5af r-13qz1uu r-1wyyakw">
-                                            </div><img class="grid-img" style="width:300px" alt="" draggable="true"
-                                                src="/about/apakoha.png" class="css-9pa8cd">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></div>
-                        <div style="text-align: left;"><a
-                                href="https://asplos.dev/wordpress/2022/02/17/programming-languages-and-compilers-bonus-project-fall-2019/">
-                                <div class="css-1dbjc4n r-16y2uox r-1wbh5a2 r-z5qs1h r-1777fci r-kzbkwu r-1e081e0 r-ttdzmv"
-                                    data-testid="card.layoutLarge.detail">
-                                    <div dir="auto"
-                                        class="css-901oao css-cens5h r-1fmj7o5 r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-qvutc0"
-                                        style="-webkit-line-clamp: 2;"><span
-                                            class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0"><small
-                                                class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">ApakoHa</small></span>
-                                    </div>
-
-                                </div>
-                            </a></div>
-                    </div>
-                    <div class="grid-item" style="height:106px;width:200px;">
-                        <div aria-hidden="true"
-                            class="css-1dbjc4n r-1igl3o0 r-pm2fo r-zmljjp r-rull8r r-qklmqi r-1adg3ll"
-                            id="id__5zty9w4nfu" data-testid="card.layoutLarge.media"><a
-                                href="https://asplos.dev/wordpress/2020/08/11/reinforcement-learning-project-spring-2020/"
-                                rel="noopener noreferrer" target="_blank" role="link"
-                                class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-1ny4l3l r-1udh08x r-o7ynqc r-6416eg r-13qz1uu">
-                                <div class="css-1dbjc4n r-1adg3ll r-1udh08x">
-                                    <div class="r-1adg3ll r-13qz1uu"></div>
-                                    <div class="r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-ipm5af r-13qz1uu">
-                                        <div aria-label=""
-                                            class="css-1dbjc4n r-1p0dtai r-1mlwlqe r-1d2f490 r-11wrixw r-61z16t r-1udh08x r-u8s1d r-zchlnj r-ipm5af r-417010"
-                                            style="margin-bottom: 0px; margin-top: 0px;">
-                                            <div class="css-1dbjc4n r-1niwhzg r-vvn4in r-u6sd8q r-4gszlv r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-zchlnj r-ipm5af r-13qz1uu r-1wyyakw"
-                                                style="background-image: url(&quot;https://asplos.dev/wordpress/wp-content/uploads/2022/02/image-72.png&quot;);">
-                                            </div><img class="grid-img" alt="" draggable="true" style="width:180px"
-                                                src="https://asplos.dev/wordpress/wp-content/uploads/2022/02/image-72.png"
-                                                class="css-9pa8cd">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></div>
-
-                        <div class="css-1dbjc4n" id="id__hkxwe54spsu"><a
-                                href="https://asplos.dev/wordpress/2020/08/11/reinforcement-learning-project-spring-2020/"
-                                rel="noopener noreferrer" target="_blank" role="link"
-                                class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-18u37iz r-16y2uox r-1wtj0ep r-1ny4l3l r-o7ynqc r-6416eg">
-                                <div class="css-1dbjc4n r-16y2uox r-1wbh5a2 r-z5qs1h r-1777fci r-kzbkwu r-1e081e0 r-ttdzmv"
-                                    data-testid="card.layoutLarge.detail">
-                                    <div style="text-align: left;"><span
-                                            class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0"><span
-                                                class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">MCTS
-                                                五子棋</span></span></div>
-                                </div>
-                            </a></div>
-                    </div>
-                </div>
-
-            </div>
-
-
         </div>
         <div class="section row" align="center">
             <script
