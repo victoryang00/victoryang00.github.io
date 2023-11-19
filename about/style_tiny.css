@@ -22,7 +22,7 @@ body {
 }
 
 .container {
-    visibility: visible;
+    display: none;
 }
 
 .checkbox {
