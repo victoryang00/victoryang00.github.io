@@ -166,7 +166,7 @@
                 honored to be advised by <a href="https://arquinn.github.io/">Andrew Quinn</a>, and hacking on
                 cutting-edge HW/SW co-design. The goal of my research is to accelerate data access and manipulation on
                 modern heterogeneous architecture and general-purpose processors for diverse workloads across companies
-                utilizing <a href="/cxl">CXL</a> technology. I believe in a hardware-software
+                utilizing <a href="/cxl">CXL</a> and <a href="/ualink">UALink</a> technology. I believe in a hardware-software
                 co-design methodology. The hardware provides specialized acceleration capabilities for common cases
                 without sacrificing heterogeneous processing performance with a better knowledge of workloads, while the
                 software adaptively takes advantage of the hardware by sending semantic hints, and falls back to
@@ -181,7 +181,8 @@
         .args(["-smp 6", "-numa node,cpus=0-7,memdev=mem0,nodeid=0", "-object memory-backend-ram,id=mem0,size=8G","-numa node,cpus=8-15,memdev=mem1,nodeid=1", "-object memory-backend-ram,id=mem1,size=8G","-m 16G,slots=4,maxmem=32G", "-machine q35,cxl=on", "-M cxl-fmw.0.targets.0=cxl.1,cxl-fmw.0.size=4G",
              "-device pxb-cxl,bus_nr=12,bus=pcie.0,id=cxl3.1", "-device cxl-rp,port=0,bus=cxl.1,id=root_port13,chassis=0,slot=2",
              "-device cxl-type3,bus=root_port13,memdev=cxl-mem1,lsa=cxl-lsa1,id=cxl-mem0",
-             "-device cxl-type1,bus=root_port14,virtio-crypto-cxl,id=crypto0,cryptodev=cryptodev0"])
+             "-device cxl-type2,bus=root_port14,virtio-gpu-cxl,id=gpu0,gpudev=gpudev0"])
+             "-device cxl-type1,bus=root_port15,virtio-crypto-cxl,id=crypto0,cryptodev=cryptodev0"])
             .output()
             .expect("failed to execute process")
     }
