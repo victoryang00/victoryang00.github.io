@@ -4,7 +4,6 @@ let messages = {
 
 
 remind = (function () {
-    console.log('1111')
     let text;
     var now = new Date().getHours()
     console.log(now)
@@ -101,7 +100,7 @@ window.bindConfigEvent = (config) => {
  */
 function showMessage(text, timeout) {
     if (Array.isArray(text)) text = text[Math.floor(Math.random() * text.length + 1) - 1];
-    //console.log('showMessage', text);
+    console.log('showMessage', text);
     $('.message').stop();
     $('.message').html(text).fadeTo(200, 1);
     if (timeout === null) timeout = 5000;

@@ -47,23 +47,6 @@
     /* background-color: #1E1E1E; */
 }
 
-#live2d {
-    position: relative;
-    left: 0;
-    /* border: 1px solid aqua; */
-}
-
-html{    
-    overflow-y: hidden;
-    overflow-x: hidden;
-    margin:0;
-}
-
-body{    
-    overflow-y: hidden;
-    overflow-x: hidden;
-    margin:0;
-}
 
 .message {
     opacity: 0;
