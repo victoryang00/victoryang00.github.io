@@ -6,7 +6,60 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
     -webkit-font-smoothing: subpixel-antialiased;
 }
+#live2d-input-container {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 1000;
+}
 
+#live2d-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+#live2d-submit {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#live2d-submit:hover {
+    background-color: #45a049;
+}
+
+#live2d-input-button {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 14px;
+}
+
+#live2d-input-button:hover {
+    background-color: #ff1493;
+}
 .skill {
     display: none;
 }

@@ -55,82 +55,190 @@
         integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
     <script src="/about/academic.js"></script>
     <script>hljs.highlightAll();</script>
-    <script>
-        var compileService = "http://godbolt.asplos.dev:9880";
+    <script type="module">
+        import { Wllama } from '/node_modules/@wllama/wllama/esm/index.js';
 
-        function makeEditor(example) {
-            var staticCheckButton = $("#staticCheckButton");
-            var editor = ace.edit(example, {
-                theme: "ace/theme/ambiance",
-                mode: "ace/mode/python",
-                fontSize: "1em",
-                wrap: true
+        // Wllama实例
+        let wllamaInstance = null;
 
-            });
+        // 配置路径
+        const CONFIG_PATHS = {
+            'single-thread/wllama.wasm': '/gpt/wllama/single-thread/wllama.wasm',
+            'multi-thread/wllama.wasm': '/gpt/wllama/multi-thread/wllama.wasm',
+        };
 
-            var errorMarkers = []
+        // 初始化Wllama
+        export async function initWllama() {
+            wllamaInstance = new Wllama(CONFIG_PATHS);
+            wllamaInstance.useMultiThread = true;
+            wllamaInstance.nbThreads = 4;
+            wllamaInstance.useEmbeddings = false;
+            return wllamaInstance;
+        }
+        initLive2DIntegration();
 
-            function clearMarkers() {
-                editor.session.clearAnnotations();
-                for (var marker of errorMarkers) {
-                    editor.session.removeMarker(marker);
-                }
-                errorMarkers.length = 0;
+        // 加载模型
+        export async function loadModel(
+            progressCallback
+        ) {
+            if (!wllamaInstance) {
+                throw new Error("Wllama未初始化");
             }
 
-
-            editor.on('change', () => {
-                clearMarkers();
-            });
-
-            $(".compile-button").click((e) => { // 先传入LLM backend，再输入音乐。
-                var button = e.target.id;
-                console.assert(button == 'staticCheckButton');
-                console.log("Running static checks...");
-                clearMarkers();
-                var code = editor.getValue();
-                fetch('http://godbolt.asplos.dev:9880/play_music', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        "text": "",
-                        "text_language": "zh",
-                        "cut_punc": "，。",
-                    }),
-                }).then(response => response.json())
-                    .then(data => {
-                        console.log('Success:', data);
-                    })
-                    .catch((error) => {
-                        console.error('Error:', error);
-                    });
-            });
-
+            await wllamaInstance.loadModelFromHF(
+                'mradermacher/DeepSeek-R1-Distill-Qwen-1.5B-Abliterated-dpo-GGUF',
+                'DeepSeek-R1-Distill-Qwen-1.5B-Abliterated-dpo.Q2_K.gguf',
+                { progressCallback }
+            );
         }
 
-        $(".example").each((i, e) => makeEditor(e))
-    </script>
-    <script>
-        function myFunction() {
-            const chk = document.getElementById('chk');
+        // 生成文本
+        async function generateText(prompt, options = {}) {
+            try {
+                // 使用await等待Promise完成
+                const response = await wllamaInstance.createCompletion(prompt, options);
 
-            chk.addEventListener('change', () => {
-            });
-            var element = document.body;
-            element.classList.toggle("dark-mode");
-            var h1Elements = document.getElementsByTagName("h1")[0];
-            h1Elements.classList.toggle("dark-mode");
-            var h2Elements = document.getElementsByTagName("h2")[0];
-            h2Elements.classList.toggle("dark-mode");
-            var h3Elements = document.getElementsByTagName("h3")[0];
-            h3Elements.classList.toggle("dark-mode");
-            var pageElements = document.getElementsByTagName("div")[0];
-            pageElements.classList.toggle("dark-mode");
-            var aElements = document.getElementsByClassName("page")[0];
-            aElements.classList.toggle("dark-mode");
+                // 根据响应类型处理
+                if (typeof response === 'string') {
+                    // 直接返回字符串
+                    return response;
+                } else if (response && typeof response === 'object') {
+                    // 尝试多种可能的格式
+                    if (response.choices && response.choices[0] && response.choices[0].text) {
+                        return response.choices[0].text;
+                    } else if (response.text) {
+                        return response.text;
+                    } else if (response.content) {
+                        return response.content;
+                    } else if (response.result) {
+                        return response.result;
+                    } else {
+                        // 尝试找到任何字符串属性
+                        const textProperty = Object.entries(response).find(([_, value]) => typeof value === 'string');
+                        if (textProperty) {
+                            return textProperty[1];
+                        }
+                    }
+                }
+
+                // 如果无法解析
+                console.error("无法解析响应:", response);
+                return "无法生成回复";
+            } catch (error) {
+                console.error("生成文本错误:", error);
+                throw error;
+            }
         }
+
+        function initLive2DIntegration() {
+            // 确保模型已加载
+            initWllama().then(() => {
+                // 在页面加载时默认加载模型
+                loadModel((progress) => {
+                    console.log(`模型加载进度: ${Math.round((progress.loaded / progress.total) * 100)}%`);
+                }).then(() => {
+                    console.log('模型加载完成，可以开始对话');
+                    // 可以在这里显示一个通知
+                }).catch(error => {
+                    console.error('模型加载失败:', error);
+                });
+            });
+        }
+        var compileService = "";
+
+
+        $(".example").each((i, e) => makeEditor(e)) >
+            function myFunction() {
+                const chk = document.getElementById('chk');
+
+                chk.addEventListener('change', () => {
+                });
+                var element = document.body;
+                element.classList.toggle("dark-mode");
+                var h1Elements = document.getElementsByTagName("h1")[0];
+                h1Elements.classList.toggle("dark-mode");
+                var h2Elements = document.getElementsByTagName("h2")[0];
+                h2Elements.classList.toggle("dark-mode");
+                var h3Elements = document.getElementsByTagName("h3")[0];
+                h3Elements.classList.toggle("dark-mode");
+                var pageElements = document.getElementsByTagName("div")[0];
+                pageElements.classList.toggle("dark-mode");
+                var aElements = document.getElementsByClassName("page")[0];
+                aElements.classList.toggle("dark-mode");
+            }
+        // 添加到现有的JavaScript文件末尾或新建<script>标签
+        document.addEventListener('DOMContentLoaded', function () {
+            // 获取元素
+            const inputButton = document.getElementById('live2d-input-button');
+            const inputContainer = document.getElementById('live2d-input-container');
+            const inputField = document.getElementById('live2d-input');
+            const submitButton = document.getElementById('live2d-submit');
+
+            // 确保元素存在并附加到controller区域
+            if (inputButton && document.getElementById('controller')) {
+                document.getElementById('controller').appendChild(inputButton);
+            }
+
+            // 如果元素不在DOM中，则添加到landlord
+            if (inputContainer && document.getElementById('landlord')) {
+                document.getElementById('landlord').appendChild(inputContainer);
+            }
+
+            // 点击按钮显示输入框
+            inputButton.addEventListener('click', function () {
+                if (inputContainer.style.display === 'block') {
+                    inputContainer.style.display = 'none';
+                } else {
+                    inputContainer.style.display = 'block';
+                    inputField.focus();
+                }
+            });
+
+            // 提交按钮点击事件
+            submitButton.addEventListener('click', sendMessage);
+
+            // 按Enter键也可以发送
+            inputField.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+
+            // 发送消息函数
+            function sendMessage() {
+                const text = inputField.value.trim();
+                if (text) {
+                    // 显示消息
+                    showMessage('你说: ' + text, 3000);
+                    // 清空输入框
+                    inputField.value = '';
+
+                    // 简单回复（如果没有后端）
+                    setTimeout(() => {
+                        const reply = generateText(text);
+                        console.log(reply);
+                        showMessage(reply, 3000);
+                        fetch(compileService + '/play_music', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                "text": reply,
+                                "text_language": "zh",
+                                "cut_punc": "，。",
+                            }),
+                        }).then(response => response.json())
+                            .then(data => {
+                                console.log('Success:', data);
+                            })
+                            .catch((error) => {
+                                console.error('Error:', error);
+                            });
+                    }, 1000);
+                }
+            }
+        });
     </script>
     <style type="text/css">
         #hover {
@@ -169,18 +277,24 @@
 
 <body>
     <div id="landlord">
-        <!-- 添加消息框 -->
         <div class="message"></div>
-        <!-- 其他已有的元素 -->
         <canvas id="live2d" class="live2d"></canvas>
         <div id="controller">
             <!-- 控制按钮 -->
         </div>
+
+        <!-- 添加的HTML元素 -->
+        <div id="live2d-input-button">💬</div>
+        <div id="live2d-input-container">
+            <input type="text" id="live2d-input" placeholder="请输入你想说的话...">
+            <button id="live2d-submit">发送</button>
+        </div>
     </div>
 
-    <script type="text/javascript" src="/live2d/js/jquery.min.js"></script>
+
+    <script src="/live2d/js/jquery.min.js"></script>
     <script src="/live2d/js/main.js"></script>
-    <script type="text/javascript" src="/live2d/js/message.js"></script>
+    <script src="/live2d/js/message.js"></script>
     <div class="page">
         <div class="section row">
             <h1 class="col">
@@ -252,7 +366,7 @@
                 Fransisco Bay area, and Shanghai, I'm proud to learn more, benefit others more, and earn more.
                 Previously, I was an undergraduate <a href="https://sist.shanghaitech.edu.cn/">@ShanghaiTech</a>.
                 <!-- TODO Run on local machine-->
-                <pre><code class="language-rust mycode">fn research_no_failure()->Result < Paper, Error > {
+                <pre><code class="language-rust mycode">fn research_no_failure()->Result <Paper, Error> {
     let output = if cfg!(target_os = "linux") {
         Command::new("qemu-x86_64-system")
         .args(["-smp 6", "-numa node,cpus=0-7,memdev=mem0,nodeid=0", "-object memory-backend-ram,id=mem0,size=8G","-numa node,cpus=8-15,memdev=mem1,nodeid=1", "-object memory-backend-ram,id=mem1,size=8G","-m 16G,slots=4,maxmem=32G", "-machine q35,cxl=on", "-M cxl-fmw.0.targets.0=cxl.1,cxl-fmw.0.size=4G",
@@ -554,16 +668,20 @@
                         <a class="container">&nbsp;&nbsp;<br></a>
                         <div class="col-right light">Fall 2022</div>
                         <a class="btn btn-outline-primary my-1 mr-1"
-                            href="https://docs.google.com/presentation/d/1Bovx3vuJ70Lof-ZHi-XeJHOaoJa_qVEUqol0Vy4AKPg/edit#slide=id.p"" target="
+                            href="https://docs.google.com/presentation/d/1Bovx3vuJ70Lof-ZHi-XeJHOaoJa_qVEUqol0Vy4AKPg/edit#slide=id.p"
+                            target="
                             _blank" rel="noopener">Discussion 10/3</a>
                         <a class="btn btn-outline-primary my-1 mr-1"
-                            href="https://docs.google.com/presentation/d/1-8uRbDaVNe3CoURpoa1CzuN-2q-COz-MPzGWmRuDjAk/edit#slide=id.p"" target="
+                            href="https://docs.google.com/presentation/d/1-8uRbDaVNe3CoURpoa1CzuN-2q-COz-MPzGWmRuDjAk/edit#slide=id.p"
+                            target="
                             _blank" rel="noopener">Discussion 10/19</a>
                         <a class="btn btn-outline-primary my-1 mr-1"
-                            href="https://docs.google.com/presentation/d/1y3OnMGykmLnAAyJXibaFQFMVGlxKEgYh_kMLGWsUv7E/edit#slide=id.p"" target="
+                            href="https://docs.google.com/presentation/d/1y3OnMGykmLnAAyJXibaFQFMVGlxKEgYh_kMLGWsUv7E/edit#slide=id.p"
+                            target="
                             _blank" rel="noopener">Discussion 10/26</a>
                         <a class="btn btn-outline-primary my-1 mr-1"
-                            href="https://docs.google.com/presentation/d/1ok8kE9TrDVrOC-D4mnp46Z4FqKxhG5ngo2cKt2SPR7c/edit#slide=id.p"" target="
+                            href="https://docs.google.com/presentation/d/1ok8kE9TrDVrOC-D4mnp46Z4FqKxhG5ngo2cKt2SPR7c/edit#slide=id.p"
+                            target="
                             _blank" rel="noopener">Discussion 11/3</a>
                     </div>
                 </div>

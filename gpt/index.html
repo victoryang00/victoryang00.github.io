@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wllama 文本生成器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .progress {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            min-height: 100px;
+            white-space: pre-wrap;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Wllama 文本生成器</h1>
+        
+        <div>
+            <button id="loadModel">加载模型</button>
+            <div id="progress" class="progress">请点击上方按钮加载模型</div>
+        </div>
+        
+        <div>
+            <textarea id="inputText" placeholder="输入提示文本..."></textarea>
+            <button id="generate" disabled>生成文本</button>
+        </div>
+        
+        <div id="output" class="output">结果将显示在这里...</div>
+    </div>
+    <script type="module" src="/gpt/bundle.js"></script>
+</body>
+</html>
