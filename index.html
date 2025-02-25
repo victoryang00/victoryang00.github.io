@@ -55,6 +55,24 @@
         integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
     <script src="/about/academic.js"></script>
     <script>hljs.highlightAll();</script>
+    <script>
+        function myFunction() {
+            const chk = document.getElementById('chk');
+
+            chk.addEventListener('change', () => {
+            });
+            var element = document.body;
+            element.classList.toggle("dark-mode");
+            var h1Elements = document.getElementsByTagName("h1")[0];
+            h1Elements.classList.toggle("dark-mode");
+            var h2Elements = document.getElementsByTagName("h2")[0];
+            h2Elements.classList.toggle("dark-mode");
+            var h3Elements = document.getElementsByTagName("h3")[0];
+            h3Elements.classList.toggle("dark-mode");
+            var aElements = document.getElementsByClassName("page")[0];
+            aElements.classList.toggle("dark-mode");
+        }
+    </script>
     <script type="module">
         import { Wllama } from 'https://cdn.jsdelivr.net/npm/@wllama/wllama@2.2.0/esm/index.js';
         // Wllama实例
@@ -147,27 +165,6 @@
             });
         }
         var compileService = "";
-
-
-        $(".example").each((i, e) => makeEditor(e)) >
-            function myFunction() {
-                const chk = document.getElementById('chk');
-
-                chk.addEventListener('change', () => {
-                });
-                var element = document.body;
-                element.classList.toggle("dark-mode");
-                var h1Elements = document.getElementsByTagName("h1")[0];
-                h1Elements.classList.toggle("dark-mode");
-                var h2Elements = document.getElementsByTagName("h2")[0];
-                h2Elements.classList.toggle("dark-mode");
-                var h3Elements = document.getElementsByTagName("h3")[0];
-                h3Elements.classList.toggle("dark-mode");
-                var pageElements = document.getElementsByTagName("div")[0];
-                pageElements.classList.toggle("dark-mode");
-                var aElements = document.getElementsByClassName("page")[0];
-                aElements.classList.toggle("dark-mode");
-            }
         // 添加到现有的JavaScript文件末尾或新建<script>标签
         document.addEventListener('DOMContentLoaded', function () {
             // 获取元素
@@ -216,7 +213,7 @@
                     inputField.value = '';
 
                     // 简单回复（如果没有后端）
-                     setTimeout(async () => {
+                    setTimeout(async () => {
                         const reply = await generateText(text.toString(), {
                             max_tokens: 100,
                             temperature: 0.7,
@@ -246,16 +243,86 @@
             }
         });
     </script>
+    <!-- 在页面底部添加以下脚本引用 -->
+    <script>
+        // 获取hover元素
+        const hoverElement = document.getElementById('hover');
+        // 获取skillset元素
+        const skillsetElement = document.querySelector('.section-text.col-right.skillset');
+
+        if (hoverElement && skillsetElement) {
+            // 初始设置
+            hoverElement.style.transition = 'opacity 0.5s ease-in-out';
+
+            // 鼠标移入效果
+            hoverElement.addEventListener('mouseenter', function () {
+                hoverElement.style.opacity = '0.9'; // 轻微降低不透明度，暗示可交互
+            });
+
+            // 鼠标移出效果
+            hoverElement.addEventListener('mouseleave', function () {
+                setTimeout(function () {
+                    hoverElement.style.opacity = '0';
+                    // 动画完成后恢复
+                    setTimeout(function () {
+                        hoverElement.style.opacity = '1';
+                    }, 2000);
+                }, 300);
+            });
+        }
+    </script>
     <style type="text/css">
+        /* 为hover区域添加圆滑过渡效果 */
         #hover {
             width: 70%;
-            background-color: #000000;
-
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.8);
+            /* 添加过渡效果 */
+            transition: all 0.5s ease-in-out;
+            opacity: 1;
+            z-index: 10;
         }
 
         #hover:hover {
             background-color: rgba(100, 100, 100, 0);
-            visibility: hidden;
+            opacity: 0;
+            /* 使用透明度代替visibility，实现平滑过渡 */
+            transition: all 0.5s ease-in-out;
+        }
+
+        /* 确保hover区域内的图片也有过渡效果 */
+        #hover .section-text {
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        #hover:hover .section-text {
+            opacity: 0;
+        }
+
+        /* 下方的替代图片样式 */
+        .section-text.col-right.skillset {
+            /* 确保这个元素在hover元素下方 */
+            position: relative;
+            z-index: 5;
+        }
+
+        /* 添加一些额外的装饰效果 */
+        #hover::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: none;
+            /* 确保不干扰鼠标事件 */
+        }
+
+        #hover:hover::before {
+            opacity: 1;
         }
     </style>
     <style>
@@ -372,7 +439,7 @@
                 Fransisco Bay area, and Shanghai, I'm proud to learn more, benefit others more, and earn more.
                 Previously, I was an undergraduate <a href="https://sist.shanghaitech.edu.cn/">@ShanghaiTech</a>.
                 <!-- TODO Run on local machine-->
-                <pre><code class="language-rust mycode">fn research_no_failure()->Result <Paper, Error> {
+                <pre><code class="language-rust">fn research_no_failure()->Result < Paper, Error > {
     let output = if cfg!(target_os = "linux") {
         Command::new("qemu-x86_64-system")
         .args(["-smp 6", "-numa node,cpus=0-7,memdev=mem0,nodeid=0", "-object memory-backend-ram,id=mem0,size=8G","-numa node,cpus=8-15,memdev=mem1,nodeid=1", "-object memory-backend-ram,id=mem1,size=8G","-m 16G,slots=4,maxmem=32G", "-machine q35,cxl=on", "-M cxl-fmw.0.targets.0=cxl.1,cxl-fmw.0.size=4G",
@@ -534,6 +601,55 @@
                             Code</a>
                         <div class="col light"><b>Yiwei Yang</b>, Aibo Hu, Yusheng Zheng, Brian Zhao, Xinqi Zhang,
                             Andrew Quinn
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h3>wBPF: A tracer for CXL pooling
+                            systems&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                        </h3>
+                    </div>
+                    <div class="btn-links mb-3">
+                        <div class="col-right light">February 2025</div>
+                        <a class="btn btn-outline-primary my-1 mr-1"
+                            href="https://hcds-workshop.github.io/edition/2025/" target="_blank" rel="noopener">HCDS
+                            25</a>
+                        <a class="btn btn-outline-primary my-1 mr-1" href="https://arxiv.org/pdf/2408.04856v1"
+                            target="_blank" rel="noopener">PDF</a>
+                        <a class="btn btn-outline-primary my-1 mr-1 js-cite-modal" href="javascript:void(0)"
+                            data-filename="/about/cite_hcds25_1.bib">
+                            Cite</a>
+                        <a class="btn btn-outline-primary my-1 mr-1"
+                            href="https://github.com/eunomia-bpf/wasm-bpf-evaluation/tree/dev-atc25">
+                            Code</a>
+                        <div class="col light">Yu Tong, Yusheng Zheng, <b>Yiwei Yang</b>,
+                            Andrew Quinn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h3>bpftime-super: A GPU observability
+                            tool&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </h3>
+                    </div>
+                    <div class="btn-links mb-3">
+                        <div class="col-right light">February 2025</div>
+                        <a class="btn btn-outline-primary my-1 mr-1"
+                            href="https://hcds-workshop.github.io/edition/2025/" target="_blank" rel="noopener">HCDS
+                            25</a>
+                        <a class="btn btn-outline-primary my-1 mr-1" href="https://arxiv.org/abs/2309.04011"
+                            target="_blank" rel="noopener">PDF</a>
+                        <a class="btn btn-outline-primary my-1 mr-1 js-cite-modal" href="javascript:void(0)"
+                            data-filename="/about/cite_hcds25.bib">
+                            Cite</a>
+                        <a class="btn btn-outline-primary my-1 mr-1"
+                            href="https://github.com/victoryang00/bpftime/tree/mnfe">
+                            Code</a>
+                        <div class="col light"><b>Yiwei Yang</b>, Yu Tong, Yusheng Zheng,
+                            Andrew Quinn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </div>
                     </div>
                 </div>

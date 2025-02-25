@@ -53,15 +53,85 @@
     <!-- and it's easy to individually load additional languages -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/languages/scala.min.js"></script>
     <script>hljs.highlightAll();</script>
+    <script>
+        // 获取hover元素
+        const hoverElement = document.getElementById('hover');
+        // 获取skillset元素
+        const skillsetElement = document.querySelector('.section-text.col-right.skillset');
+
+        if (hoverElement && skillsetElement) {
+            // 初始设置
+            hoverElement.style.transition = 'opacity 0.5s ease-in-out';
+
+            // 鼠标移入效果
+            hoverElement.addEventListener('mouseenter', function () {
+                hoverElement.style.opacity = '0.9'; // 轻微降低不透明度，暗示可交互
+            });
+
+            // 鼠标移出效果
+            hoverElement.addEventListener('mouseleave', function () {
+                setTimeout(function () {
+                    hoverElement.style.opacity = '0';
+                    // 动画完成后恢复
+                    setTimeout(function () {
+                        hoverElement.style.opacity = '1';
+                    }, 2000);
+                }, 300);
+            });
+        }
+    </script>
     <style type="text/css">
+        /* 为hover区域添加圆滑过渡效果 */
         #hover {
             width: 70%;
-            background-color: #000000;
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.8);
+            /* 添加过渡效果 */
+            transition: all 0.5s ease-in-out;
+            opacity: 1;
+            z-index: 10;
         }
 
         #hover:hover {
             background-color: rgba(100, 100, 100, 0);
-            visibility: hidden;
+            opacity: 0;
+            /* 使用透明度代替visibility，实现平滑过渡 */
+            transition: all 0.5s ease-in-out;
+        }
+
+        /* 确保hover区域内的图片也有过渡效果 */
+        #hover .section-text {
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        #hover:hover .section-text {
+            opacity: 0;
+        }
+
+        /* 下方的替代图片样式 */
+        .section-text.col-right.skillset {
+            /* 确保这个元素在hover元素下方 */
+            position: relative;
+            z-index: 5;
+        }
+
+        /* 添加一些额外的装饰效果 */
+        #hover::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: none;
+            /* 确保不干扰鼠标事件 */
+        }
+
+        #hover:hover::before {
+            opacity: 1;
         }
     </style>
     <script>
@@ -194,8 +264,8 @@
             <h2 class="col">技能</h2>
             <div class="section-text col-right skill" style="position: relative;left:30px;">
                 <iframe src="/block" width="530" height="290" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen> </iframe>
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen> </iframe>
             </div>
             <div id="hover">
                 <div class="section-text col-right skill" style="position:absolute; transform: translate(10%, 14%);">
@@ -295,7 +365,8 @@
                         <a class="btn btn-outline-primary my-1 mr-1" href="https://github.com/CXLMemUring/CIRA">
                             Code</a>
                         <div class="col light"><b>Yiwei Yang</b>, Yang Man, Brian Zhao,
-                            Andrew Quinn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            Andrew
+                            Quinn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </div>
                     </div>
                 </div>
@@ -317,6 +388,55 @@
                             Code</a>
                         <div class="col light"><b>Yiwei Yang</b>, Aibo Hu, Yusheng Zheng, Brian Zhao, Xinqi Zhang, and
                             Andrew Quinn
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h3>wBPF: A tracer for CXL pooling
+                            systems&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                        </h3>
+                    </div>
+                    <div class="btn-links mb-3">
+                        <div class="col-right light">2025年2月</div>
+                        <a class="btn btn-outline-primary my-1 mr-1"
+                            href="https://hcds-workshop.github.io/edition/2025/" target="_blank" rel="noopener">HCDS
+                            25</a>
+                        <a class="btn btn-outline-primary my-1 mr-1" href="https://arxiv.org/pdf/2408.04856v1"
+                            target="_blank" rel="noopener">PDF</a>
+                        <a class="btn btn-outline-primary my-1 mr-1 js-cite-modal" href="javascript:void(0)"
+                            data-filename="/about/cite_hcds25_1.bib">
+                            Cite</a>
+                        <a class="btn btn-outline-primary my-1 mr-1"
+                            href="https://github.com/eunomia-bpf/wasm-bpf-evaluation/tree/dev-atc25">
+                            Code</a>
+                        <div class="col light">Yu Tong, Yusheng Zheng, <b>Yiwei Yang</b>,
+                            Andrew Quinn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h3>bpftime-super: A GPU observability
+                            tool&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </h3>
+                    </div>
+                    <div class="btn-links mb-3">
+                        <div class="col-right light">2025年2月</div>
+                        <a class="btn btn-outline-primary my-1 mr-1"
+                            href="https://hcds-workshop.github.io/edition/2025/" target="_blank" rel="noopener">HCDS
+                            25</a>
+                        <a class="btn btn-outline-primary my-1 mr-1" href="https://arxiv.org/abs/2309.04011"
+                            target="_blank" rel="noopener">PDF</a>
+                        <a class="btn btn-outline-primary my-1 mr-1 js-cite-modal" href="javascript:void(0)"
+                            data-filename="/about/cite_hcds25.bib">
+                            Cite</a>
+                        <a class="btn btn-outline-primary my-1 mr-1"
+                            href="https://github.com/victoryang00/bpftime/tree/mnfe">
+                            Code</a>
+                        <div class="col light"><b>Yiwei Yang</b>, Yu Tong, Yusheng Zheng,
+                            Andrew Quinn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </div>
                     </div>
                 </div>
