@@ -6,9 +6,10 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   -webkit-font-smoothing: subpixel-antialiased;
 }
+/* 修复对话框位置的CSS */
 #live2d-input-container {
   position: absolute;
-  bottom: 50px;
+  bottom: 80px !important; /* 调高位置，避免被模型遮挡 */
   left: 0;
   width: 250px;
   background-color: rgba(255, 255, 255, 0.9);
@@ -16,7 +17,26 @@ body {
   padding: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   display: none;
-  z-index: 1000;
+  z-index: 10000 !important; /* 使用更高的z-index确保在模型上方 */
+}
+
+/* 如果是使用wllama集成，则修改这个ID */
+#wllama-input-container {
+  position: absolute;
+  bottom: 80px !important; /* 调高位置，避免被模型遮挡 */
+  left: 0;
+  width: 250px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  display: none;
+  z-index: 10000 !important; /* 使用更高的z-index确保在模型上方 */
+}
+
+/* 确保消息框也在上方 */
+.message {
+  z-index: 10001 !important;
 }
 
 #live2d-input {
