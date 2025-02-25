@@ -57,7 +57,6 @@
     <script>hljs.highlightAll();</script>
     <script type="module">
         import { Wllama } from 'https://cdn.jsdelivr.net/npm/@wllama/wllama@2.2.0/esm/index.js';
-
         // Wllama实例
         let wllamaInstance = null;
 
@@ -94,6 +93,9 @@
 
         // 生成文本
         async function generateText(prompt, options = {}) {
+            if (!wllamaInstance) {
+                throw new Error("模型未加载");
+            }
             try {
                 // 使用await等待Promise完成
                 const response = await wllamaInstance.createCompletion(prompt, options);
@@ -214,9 +216,13 @@
                     inputField.value = '';
 
                     // 简单回复（如果没有后端）
-                    setTimeout(() => {
-                        const reply = generateText(text);
-                        console.log(reply);
+                     setTimeout(async () => {
+                        const reply = await generateText(text.toString(), {
+                            max_tokens: 100,
+                            temperature: 0.7,
+                            top_p: 1,
+                            top_k: 40,
+                        });
                         showMessage(reply, 3000);
                         fetch(compileService + '/play_music', {
                             method: 'POST',
