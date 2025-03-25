@@ -103,9 +103,13 @@
             }
 
             await wllamaInstance.loadModelFromHF(
-                'mradermacher/DeepSeek-R1-Distill-Qwen-1.5B-Abliterated-dpo-GGUF',
-                'DeepSeek-R1-Distill-Qwen-1.5B-Abliterated-dpo.Q2_K.gguf',
-                { progressCallback }
+                'ggml-org/models',
+                'tinyllamas/stories260K.gguf',
+                {
+                    progressCallback,
+                    n_ctx: 10240,
+                    n_threads: 2,
+                }
             );
         }
 
@@ -607,6 +611,32 @@
                 </div>
                 <div class="row">
                     <div class="col">
+                        <h3>Extending Applications Safely and Efficiently (bpftime: userspace eBPF Runtime for Uprobe,
+                            Syscall and Kernel-User Interactions)</h3>
+                    </div>
+                    <div class="btn-links mb-3">
+                        <div class="col-right light">July 2025</div>
+                        <a class="btn btn-outline-primary my-1 mr-1" href="https://www.usenix.org/conference/osdi25/"
+                            target="_blank" rel="noopener">OSDI
+                            25</a>
+                        <a class="btn btn-outline-primary my-1 mr-1" href="https://arxiv.org/pdf/2311.07923"
+                            target="_blank" rel="noopener">PDF</a>
+                        <a class="btn btn-outline-primary my-1 mr-1 js-cite-modal" href="javascript:void(0)"
+                            data-filename="/about/cite_osdi25.bib">
+                            Cite</a>
+                        <a class="btn btn-outline-primary my-1 mr-1"
+                            href="https://lpc.events/event/17/contributions/1639/attachments/1280/2585/userspace-ebpf-bpftime-lpc.pdf">
+                            Slides</a>
+                        <a class="btn btn-outline-primary my-1 mr-1" href="https://github.com/eunomia-bpf/bpftime/">
+                            Code</a>
+                        <div class="col light">Yusheng Zheng, Tong Yu, <b>Yiwei Yang</b>, Yanpeng Hu, XiaoZheng Lai, Dan
+                            Williams,
+                            Andrew Quinn
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
                         <h3>wBPF: Efficient Edge-Case Observability for CXL
                             Pooling systems via
                             eBPF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -655,7 +685,7 @@
                             href="https://docs.google.com/presentation/d/1K80P6URGDKZvJUmpFxzlvXQywnzvTnFvRZufZp-7mmo"
                             target="_blank" rel="noopener">Slides</a>
                         <a class="btn btn-outline-primary my-1 mr-1"
-                            href="https://github.com/victoryang00/bpftime/tree/mnfe">
+                            href="https://github.com/victoryang00/bpftime-super">
                             Code</a>
                         <div class="col light"><b>Yiwei Yang</b>, Yu Tong, Yusheng Zheng,
                             Andrew
@@ -684,30 +714,6 @@
                         <a class="btn btn-outline-primary my-1 mr-1" href="https://github.com/eunomia-bpf/KEN/">
                             Code</a>
                         <div class="col light">Yusheng Zheng, <b>Yiwei Yang</b>, Maolin Chen, Andrew Quinn
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <h3>bpftime: userspace eBPF Runtime for Uprobe, Syscall and Kernel-User Interactions</h3>
-                    </div>
-                    <div class="btn-links mb-3">
-                        <div class="col-right light">November 2023</div>
-                        <a class="btn btn-outline-primary my-1 mr-1"
-                            href="https://lpc.events/event/17/contributions/1639/" target="_blank" rel="noopener">LPC
-                            23</a>
-                        <a class="btn btn-outline-primary my-1 mr-1" href="https://arxiv.org/pdf/2311.07923"
-                            target="_blank" rel="noopener">PDF</a>
-                        <a class="btn btn-outline-primary my-1 mr-1 js-cite-modal" href="javascript:void(0)"
-                            data-filename="/about/cite_lpc23.bib">
-                            Cite</a>
-                        <a class="btn btn-outline-primary my-1 mr-1"
-                            href="https://lpc.events/event/17/contributions/1639/attachments/1280/2585/userspace-ebpf-bpftime-lpc.pdf">
-                            Slides</a>
-                        <a class="btn btn-outline-primary my-1 mr-1" href="https://github.com/eunomia-bpf/bpftime/">
-                            Code</a>
-                        <div class="col light">Yusheng Zheng, Tong Yu, <b>Yiwei Yang</b>, Yanpeng Hu, XiaoZheng Lai,
-                            Andrew Quinn
                         </div>
                     </div>
                 </div>
